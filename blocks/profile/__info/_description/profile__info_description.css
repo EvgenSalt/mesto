@@ -1,0 +1,10 @@
+.profile__info_description {
+  height: 18px;
+  grid-area: description;
+  margin: 0 0 25px 30px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  color: #FFFFFF;
+}

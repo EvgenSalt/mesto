@@ -1,0 +1,8 @@
+.profile__info {
+  display: grid;
+  align-items: end;
+  grid-template-columns: repeat(3, min-content);
+  grid-template-areas: 
+  "avatar name edit-btn"
+  "avatar description .";
+}
