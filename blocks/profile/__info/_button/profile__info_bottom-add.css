@@ -7,3 +7,11 @@
   border-radius: 2px;
   background: none;
 }
+
+@media (max-width: 650px) {
+  .profile__info_bottom-add {
+    width: 282px;
+    height: 50px;
+    margin-left: 10px;
+  }
+}

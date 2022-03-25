@@ -11,3 +11,13 @@
   color: #FFFFFF;
   white-space: nowrap;
 }
+
+@media (max-width: 650px) {
+  .profile__info_name {
+    margin: 27px 10px 0 37px;
+    font-size: 27px;
+    line-height: 33px;
+    width: 189px;
+    height: 26px;
+  }
+}

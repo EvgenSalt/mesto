@@ -6,3 +6,12 @@
   "avatar name edit-btn"
   "avatar description .";
 }
+
+@media (max-width: 650px) {
+  .profile__info {
+    grid-template-areas: 
+    "avatar avatar avatar"
+    "name . edit-btn "
+    "description description .";
+  }
+}

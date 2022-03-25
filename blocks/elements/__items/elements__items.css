@@ -1,4 +1,5 @@
 .elements__items {
+  max-width: 880px;
   padding: 0;
   display: grid;
   grid-template-columns: repeat(auto-fit, 282px);
@@ -7,5 +8,10 @@
   padding: 0;
   justify-items: center;
   object-fit: cover;
-  margin: 0 auto;
+}
+
+@media (max-width: 650px) {
+  .elements__items {
+    row-gap: 22px;
+  }
 }

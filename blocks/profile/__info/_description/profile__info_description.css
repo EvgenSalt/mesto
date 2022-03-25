@@ -8,3 +8,11 @@
   line-height: 22px;
   color: #FFFFFF;
 }
+
+@media (max-width: 650px) {
+  .profile__info_description {
+    margin: 15px 0 0 53px;
+    font-size: 14px;
+    line-height: 17px;
+  }
+}

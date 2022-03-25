@@ -3,3 +3,9 @@
   width: 120px;
   grid-area: avatar;
 }
+
+@media (max-width: 650px) {
+  .profile__avatar {
+    margin-left: 73px;
+  }
+}

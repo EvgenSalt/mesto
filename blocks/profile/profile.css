@@ -6,3 +6,11 @@
   align-items: center;
   justify-content: space-between;
 }
+
+@media (max-width: 650px) {
+  .profile {
+    flex-direction: column;
+    height: 286px;
+    margin-bottom: 38px;
+  }
+}

@@ -6,3 +6,10 @@
   width: 24px;
   height: 24px;
 }
+
+@media (max-width: 650px) {
+  .profile__info_button-edit {
+    width: 18px;
+    height: 18px;
+  }
+}

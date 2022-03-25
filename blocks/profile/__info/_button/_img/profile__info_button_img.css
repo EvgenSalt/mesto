@@ -1,0 +1,11 @@
+.profile__info_button_img {
+  width: 24px;
+  height: 24px;
+}
+
+@media (max-width: 650px) {
+  .profile__info_button_img {
+    width: 18px;
+    height: 18px;
+  }
+}
