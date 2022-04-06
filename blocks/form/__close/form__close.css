@@ -11,6 +11,11 @@
   height: 32px;
 }
 
+.form__close:hover {
+  transition: .3s ease;
+  opacity: .6;
+}
+
 @media (max-width: 525px) {
   .form__close {
     width: 20px;

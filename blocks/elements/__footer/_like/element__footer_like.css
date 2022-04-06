@@ -1,6 +1,19 @@
 .element__footer_like {
   margin: 25px 20px 25px 0;
-  background: none;
+  width: 22px;
   border: none;
-  padding: 0;
+  padding: auto;
+  background: transparent url(../../../../images/Group.svg) center no-repeat;
+  cursor: pointer;
+}
+
+.element__footer_like:hover {
+  transition: .3s ease;
+  opacity: .5;
+}
+
+.element__footer_like:active {
+  transition: .3s ease;
+  opacity: 1;
+  background: transparent url(../../../../images/Union.svg) center no-repeat;
 }

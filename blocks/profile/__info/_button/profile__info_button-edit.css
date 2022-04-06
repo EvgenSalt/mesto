@@ -5,11 +5,20 @@
   padding: 0;
   width: 24px;
   height: 24px;
+  background: transparent url(../../../../images/EditButton.svg) center no-repeat;
+  background-size: 24px 24px;
+  cursor: pointer;
+}
+
+.profile__info_button-edit:hover {
+  transition: .3s ease;
+  opacity: .6;
 }
 
 @media (max-width: 650px) {
   .profile__info_button-edit {
     width: 18px;
     height: 18px;
+    background-size: 18px 18px;
   }
 }

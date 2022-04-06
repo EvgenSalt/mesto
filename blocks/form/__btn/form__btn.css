@@ -12,6 +12,12 @@
   text-align: center;
   color: #fff;
   padding: 0;
+  cursor: pointer;
+}
+
+.form__btn:hover {
+  transition: .3s ease;
+  opacity: .8;
 }
 
 @media (max-width: 525px) {
