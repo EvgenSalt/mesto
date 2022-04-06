@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./pages/index.css">
+  <link rel="shortcut icon" href="#">
   <title>Mesto</title>
 </head>
 
@@ -103,6 +104,21 @@
       © 2022 Mesto Russia
     </p>
   </footer>
+  <form action="signin" method="post" class="form">
+    <div class="form__content">
+      <button class="form__close" type="button"></button>
+      <div class="form__edit">
+        <h3 class="form__title">
+          Редактировать профиль
+        </h3>
+        <input type="text" name="username" placeholder="Жак-Ив Кусто" class="form__input name">
+        <input type="text" name="userwork" placeholder="Исследователь океана" class="form__input work">
+        <button class="form__btn" type="submit">Сохранить</button>
+      </div>
+    </div>
+
+  </form>
+  <script src="scripts/index.js"></script>
 </body>
 
 </html>
