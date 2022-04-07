@@ -4,7 +4,7 @@ let btnCloseForm = editForm.querySelector('.form__close');
 let formInputName = editForm.querySelector('.name');
 let formInputWork = editForm.querySelector('.work');
 let saveEditInfo = editForm.querySelector('.form__btn');
-let profileName = document.querySelector('.profile__info_name');
+let profileName = document.querySelector('.profile__info__name');
 let profileWork = document.querySelector('.profile__info_description');
 
 function fillInput() {
