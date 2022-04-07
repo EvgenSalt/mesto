@@ -1,4 +1,4 @@
-.element__like {
+.elements__like {
   margin: 25px 20px 25px 0;
   width: 22px;
   border: none;
@@ -7,12 +7,12 @@
   cursor: pointer;
 }
 
-.element__like:hover {
+.elements__like:hover {
   transition: .3s ease;
   opacity: .5;
 }
 
-.element__like:active {
+.elements__like:active {
   transition: .3s ease;
   opacity: 1;
   background: transparent url(../../../../images/Union.svg) center no-repeat;
