@@ -1,4 +1,4 @@
-.profile__info_description {
+.profile__description {
   height: 18px;
   grid-area: description;
   margin: 0 0 25px 30px;
@@ -10,7 +10,7 @@
 }
 
 @media (max-width: 650px) {
-  .profile__info_description {
+  .profile__description {
     margin: 15px 0 0 53px;
     font-size: 14px;
     line-height: 17px;

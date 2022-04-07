@@ -1,4 +1,4 @@
-.profile__info_button-edit {
+.profile__edit {
   margin: 0;
   border: none;
   padding: 0;
@@ -9,13 +9,13 @@
   cursor: pointer;
 }
 
-.profile__info_button-edit:hover {
+.profile__edit:hover {
   transition: .3s ease;
   opacity: .6;
 }
 
 @media (max-width: 650px) {
-  .profile__info_button-edit {
+  .profile__edit {
     width: 18px;
     height: 18px;
     background-size: 18px 18px;

@@ -1,11 +1,11 @@
-let btnEdit = document.querySelector('.profile__info_button-edit');
+let btnEdit = document.querySelector('.profile__edit');
 let editForm = document.querySelector('.form');
 let btnCloseForm = editForm.querySelector('.form__close');
 let formInputName = editForm.querySelector('.name');
 let formInputWork = editForm.querySelector('.work');
 let saveEditInfo = editForm.querySelector('.form__btn');
 let profileName = document.querySelector('.profile__name');
-let profileWork = document.querySelector('.profile__info_description');
+let profileWork = document.querySelector('.profile__description');
 
 function fillInput() {
   formInputName.value = profileName.textContent;
