@@ -20,3 +20,27 @@
     margin-left: 19px;
   }
 }
+
+@media (max-width: 610px) {
+  .elements {
+    margin-left: 25vw;
+  }
+}
+
+@media (max-width: 564px) {
+  .elements {
+    margin-left: 20vw;
+  }
+}
+
+@media (max-width: 470px) {
+  .elements {
+    margin-left: 10vw;
+  }
+}
+
+@media (max-width: 333px) {
+  .elements {
+    margin-left: 19px;
+  }
+}
