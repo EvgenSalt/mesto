@@ -4,7 +4,7 @@
   padding: 0;
   width: 24px;
   height: 24px;
-  background: transparent url(../../../../images/EditButton.svg) center no-repeat;
+  background: transparent url(../../../images/EditButton.svg) center no-repeat;
   background-size: 24px 24px;
   cursor: pointer;
 }
