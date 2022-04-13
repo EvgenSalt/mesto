@@ -15,7 +15,6 @@
 @media (max-width: 720px) {
   .profile {
     flex-direction: column;
-    height: 286px;
     margin: 40px 0 38px;
   }
 }

@@ -24,7 +24,7 @@
   .form__btn {
     width: 238px;
     height: 46px;
-    margin: 14px 21px;
+    margin: 14px auto 25px;
     font-size: 14px;
     line-height: 17px;
   }

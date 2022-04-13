@@ -1,7 +1,6 @@
 .footer {
   margin: 67px auto 60px;
   max-width: 880px;
-  height: 18px;
 }
 
 @media (max-width: 650px) {

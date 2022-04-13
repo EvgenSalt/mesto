@@ -1,8 +1,8 @@
 let btnEdit = document.querySelector('.profile__edit');
 let editForm = document.querySelector('.popup');
 let btnCloseForm = editForm.querySelector('.popup__close');
-let formInputName = editForm.querySelector('.form__input_name');
-let formInputWork = editForm.querySelector('.form__input_work');
+let formInputName = editForm.querySelector('.form__input_text_name');
+let formInputWork = editForm.querySelector('.form__input_text_work');
 let profileName = document.querySelector('.profile__name');
 let profileWork = document.querySelector('.profile__description');
 
@@ -24,7 +24,7 @@ function closedEditForm() {
 /*  функция сохранения формы при нажатии на оверлэй  */
 // function onOverlayClick(event) {
 //   if (event.target === event.currentTarget) {
-//     openEditForm();
+//     closedEditForm();
 //   }
 // }
 // editForm.addEventListener('click', onOverlayClick);
