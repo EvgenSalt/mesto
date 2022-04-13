@@ -7,8 +7,8 @@
   background-color: #000;
 }
 
-@media (max-width: 321px) {
+@media (max-width: 940px) {
   .page {
-    padding-top: 28px;
+    padding: 28px 0;
   }
 }

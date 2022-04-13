@@ -3,44 +3,8 @@
   margin: 0 auto;
 }
 
-@media (max-width: 888px) {
+@media (max-width: 910px) {
   .elements {
-    margin-left: 15vw;
-  }
-}
-
-@media (max-width: 711px) {
-  .elements {
-    margin-left: 8vw;
-  }
-}
-
-@media (max-width: 650px) {
-  .elements {
-    margin-left: 19px;
-  }
-}
-
-@media (max-width: 610px) {
-  .elements {
-    margin-left: 25vw;
-  }
-}
-
-@media (max-width: 564px) {
-  .elements {
-    margin-left: 20vw;
-  }
-}
-
-@media (max-width: 376px) {
-  .elements {
-    margin-left: 14vw;
-  }
-}
-
-@media (max-width: 333px) {
-  .elements {
-    margin-left: 19px;
+    padding: 0 19px;
   }
 }

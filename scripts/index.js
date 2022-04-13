@@ -1,9 +1,8 @@
 let btnEdit = document.querySelector('.profile__edit');
-let editForm = document.querySelector('.form');
-let btnCloseForm = editForm.querySelector('.form__close');
-let formInputName = editForm.querySelector('.name');
-let formInputWork = editForm.querySelector('.work');
-let saveEditInfo = editForm.querySelector('.form__btn');
+let editForm = document.querySelector('.popup');
+let btnCloseForm = editForm.querySelector('.popup__close');
+let formInputName = editForm.querySelector('.form__input_name');
+let formInputWork = editForm.querySelector('.form__input_work');
 let profileName = document.querySelector('.profile__name');
 let profileWork = document.querySelector('.profile__description');
 
@@ -13,24 +12,31 @@ function fillInput() {
 }
 
 function openEditForm() {
-  editForm.classList.toggle('form__active');
   fillInput();
+  editForm.classList.add('popup_opened');
 }
 
-function onOverlayClick(event) {
-  if (event.target === event.currentTarget) {
-    openEditForm();
-  }
+function closedEditForm() {
+  fillInput();
+  editForm.classList.remove('popup_opened');
 }
+
+/*  функция сохранения формы при нажатии на оверлэй  */
+// function onOverlayClick(event) {
+//   if (event.target === event.currentTarget) {
+//     openEditForm();
+//   }
+// }
+// editForm.addEventListener('click', onOverlayClick);
 
 function formSubmitHandler(event) {
   event.preventDefault();
   profileName.textContent = formInputName.value;
   profileWork.textContent = formInputWork.value;
-  openEditForm();
+  closedEditForm();
 }
 
+
 btnEdit.addEventListener('click', openEditForm);
-btnCloseForm.addEventListener('click', openEditForm);
-editForm.addEventListener('click', onOverlayClick);
-saveEditInfo.addEventListener('click', formSubmitHandler);
+btnCloseForm.addEventListener('click', closedEditForm);
+editForm.addEventListener('submit', formSubmitHandler);
