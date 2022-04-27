@@ -5,4 +5,5 @@
   width: 100%;
   background-color: #FFFFFF;
   overflow: hidden;
+  position: relative;
 }

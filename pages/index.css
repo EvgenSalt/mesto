@@ -13,6 +13,7 @@
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/elements/__items/elements__items.css);
 @import url(../blocks/elements/__item/elements__item.css);
+@import url(../blocks/elements/__trash/elements__trash.css);
 @import url(../blocks/elements/__img/elements__img.css);
 @import url(../blocks/elements/__footer/elements__footer.css);
 @import url(../blocks/elements/__text/elements__text.css);
