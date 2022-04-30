@@ -26,9 +26,9 @@ const initialCards = [
 ];
 
 const btnEdit = document.querySelector('.profile__edit');
-const editForm = document.querySelector('.popup__edit_form');
-const addImgForm = document.querySelector('.popup__add-img');
-const showImg = document.querySelector('.popup__show-img');
+const editForm = document.querySelector('.popup__edit');
+const addImgForm = document.querySelector('.popup__add');
+const showImg = document.querySelector('.popup__show');
 const btnCloseEditForm = editForm.querySelector('.popup__close_edit-form');
 const btnCloseAddImgForm = addImgForm.querySelector('.popup__close_add-img');
 const btnCloseShowImg = showImg.querySelector('.popup__close_show-img');
@@ -43,7 +43,7 @@ const btnAddImg = document.querySelector('.profile__add');
 const listElements = document.querySelector('.elements__items');
 const templateCard = document.querySelector('.template__card');
 
-let popapImg = document.querySelector('.popup__img-card');
+let popapImg = document.querySelector('.popup__img');
 let popapNameImg = document.querySelector('.popup__text');
 
 function renderCard() {
