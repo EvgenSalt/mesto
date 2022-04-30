@@ -1,40 +1,13 @@
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
 const btnEdit = document.querySelector('.profile__edit');
-const editForm = document.querySelector('.popup_edit');
+const formEdit = document.querySelector('.popup_edit');
 const addImgForm = document.querySelector('.popup_add');
-const showImg = document.querySelector('.popup_show-img');
-const btnCloseEditForm = editForm.querySelector('.popup__close_edit-form');
+const imgShow = document.querySelector('.popup_show-img');
+const btnCloseEditForm = formEdit.querySelector('.popup__close_edit-form');
 const btnCloseAddImgForm = addImgForm.querySelector('.popup__close_add-img');
-const btnCloseShowImg = showImg.querySelector('.popup__close_show-img');
-const formTitle = editForm.querySelector('.form__title');
-const formInputName = editForm.querySelector('.form__input_text_name');
-const formInputWork = editForm.querySelector('.form__input_text_work');
+const btnCloseShowImg = imgShow.querySelector('.popup__close_show-img');
+const formTitle = formEdit.querySelector('.form__title');
+const formInputName = formEdit.querySelector('.form__input_text_name');
+const formInputWork = formEdit.querySelector('.form__input_text_work');
 const formInputNameImg = addImgForm.querySelector('.form__input_text_name-img');
 const formInputSrcImg = addImgForm.querySelector('.form__input_text_src-img');
 const profileName = document.querySelector('.profile__name');
@@ -42,9 +15,8 @@ const profileWork = document.querySelector('.profile__description');
 const btnAddImg = document.querySelector('.profile__add');
 const listElements = document.querySelector('.elements__items');
 const templateCard = document.querySelector('.template__card');
-
-let popapImg = document.querySelector('.popup__img');
-let popapNameImg = document.querySelector('.popup__text');
+const popapImg = document.querySelector('.popup__img');
+const popapNameImg = document.querySelector('.popup__text');
 
 function renderCard() {
   const cardHTML = initialCards.map(getElementCard);
@@ -57,7 +29,6 @@ function getElementCard(item) {
   const imgCard = getElementTemplateCard.querySelector('.elements__img');
   const btnlike = getElementTemplateCard.querySelector('.elements__like');
   const btnTrash = getElementTemplateCard.querySelector('.elements__trash');
-  const btnImg = getElementTemplateCard.querySelector('.elements__img');
 
   imgCard.src = item.link;
   imgCard.alt = item.name;
@@ -67,7 +38,7 @@ function getElementCard(item) {
 
   btnTrash.addEventListener('click', handleDeletCard);
 
-  btnImg.addEventListener('click', () => {
+  imgCard.addEventListener('click', () => {
     popapImg.src = imgCard.src;
     popapNameImg.textContent = nameCard.textContent;
     openPopapShowImg();
@@ -77,7 +48,7 @@ function getElementCard(item) {
 }
 
 function openPopapShowImg() {
-  openPopup(showImg);
+  openPopup(imgShow);
 }
 
 function handleDeletCard(event) {
@@ -91,16 +62,16 @@ function fillInput() {
 
 function openEditForm() {
   fillInput();
-  openPopup(editForm);
+  openPopup(formEdit);
 }
 
 function openAddImgForm() {
   openPopup(addImgForm);
 }
 
-function closedEditForm() {
+function closeEditForm() {
   fillInput();
-  closedPopup(editForm);
+  closedPopup(formEdit);
 }
 
 function closedAddImgForm() {
@@ -110,7 +81,7 @@ function closedAddImgForm() {
 }
 
 function closedShowImg() {
-  closedPopup(showImg);
+  closedPopup(imgShow);
 }
 
 function closedPopup(element) {
@@ -125,7 +96,7 @@ function formSubmitHandlerEdit(event) {
   event.preventDefault();
   profileName.textContent = formInputName.value;
   profileWork.textContent = formInputWork.value;
-  closedEditForm();
+  closeEditForm();
 }
 
 function formSubmitHandlerAddImg(event) {
@@ -140,17 +111,16 @@ function formSubmitHandlerAddImg(event) {
 /*  функция закрытия формы при нажатии на оверлэй  */
 // function onOverlayClick(event) {
 //   if (event.target === event.currentTarget) {
-//     closedEditForm();
+//     closedPopup(event.target);
 //   }
 // }
-// editForm.addEventListener('click', onOverlayClick);
 
 btnEdit.addEventListener('click', openEditForm);
 btnAddImg.addEventListener('click', openAddImgForm);
-btnCloseEditForm.addEventListener('click', closedEditForm);
+btnCloseEditForm.addEventListener('click', closeEditForm);
 btnCloseAddImgForm.addEventListener('click', closedAddImgForm);
 btnCloseShowImg.addEventListener('click', closedShowImg);
-editForm.addEventListener('submit', formSubmitHandlerEdit);
+formEdit.addEventListener('submit', formSubmitHandlerEdit);
 addImgForm.addEventListener('submit', formSubmitHandlerAddImg);
 
 
