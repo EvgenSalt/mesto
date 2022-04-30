@@ -96,7 +96,7 @@
   </footer>
   <section class="popup popup__edit-form">
     <div class="popup__container">
-      <button aria-label="close" class="popup__close close__edit-form" type="button"></button>
+      <button aria-label="close" class="popup__close popup__close_edit-form" type="button"></button>
       <form action="signin" method="post" class="form">
         <h3 class="form__title">
           Редактировать профиль
@@ -109,16 +109,28 @@
   </section>
   <section class="popup popup__add-img">
     <div class="popup__container">
-      <button aria-label="close" class="popup__close close__add-img" type="button"></button>
+      <button aria-label="close" class="popup__close popup__close_add-img" type="button"></button>
       <form action="signin" method="post" class="form">
         <h3 class="form__title">
           Новое место
         </h3>
-        <input type="text" name="username" placeholder="Название" class="form__input form__input_text_name" value="">
-        <input type="text" name="userwork" placeholder="Ссылка на картинку" class="form__input form__input_text_work"
+        <input type="text" name="username" placeholder="Название" class="form__input form__input_text_name-img"
+          value="">
+        <input type="text" name="userwork" placeholder="Ссылка на картинку" class="form__input form__input_text_src-img"
           value="">
         <button aria-label="submit" class="form__btn" type="submit">Создать</button>
       </form>
+    </div>
+  </section>
+  <section class="popup popup__show-img">
+    <div class="popup__container">
+      <button aria-label="close" class="popup__close popup__close_show-img" type="button"></button>
+      <div class="popup__img">
+        <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Фото" class="popup__img-card">
+        <h3 class="popup__text">
+          Карачаево-Черкессия
+        </h3>
+      </div>
     </div>
   </section>
   <template class="template__card">
