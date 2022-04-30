@@ -1,7 +1,4 @@
 .popup {
-  animation: hide 2s linear;
-  animation-fill-mode: forwards;
-  
   place-content: center;
   background-color: rgba(0, 0, 0, .5);
   position: fixed;
@@ -9,19 +6,5 @@
   bottom: 0;
   left: 0;
   right: 0;
-  /* display: none; */
-}
-
-@keyframes hide {
-  0% {
-    display: grid;
-    opacity: 1;
-  }
-  99% {
-    display: grid;
-  }
-  100% {
-    display: none;
-    opacity: 0;
-  }
+  display: none;
 }

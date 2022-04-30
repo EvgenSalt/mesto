@@ -74,7 +74,7 @@ function getElementCard(item) {
 }
 
 function openPopapShowImg() {
-  showImg.classList.add('popup_opened');
+  openPopup(showImg);
 }
 
 function handleDeletCard(event) {
@@ -88,27 +88,48 @@ function fillInput() {
 
 function openEditForm() {
   fillInput();
-  editForm.classList.add('popup_opened');
+  openPopup(editForm);
 }
 
 function openAddImgForm() {
-  addImgForm.classList.add('popup_opened');
+  openPopup(addImgForm);
 }
 
 function closedEditForm() {
   fillInput();
-  editForm.classList.remove('popup_opened');
+  closedPopup(editForm);
 }
 
 function closedAddImgForm() {
-  addImgForm.classList.remove('popup_opened');
+  closedPopup(addImgForm);
   formInputNameImg.value = '';
   formInputSrcImg.value = '';
 }
 
 function closedShowImg() {
-  console.log('Closed');
-  showImg.classList.remove('popup_opened');
+  closedPopup(showImg);
+}
+
+function closedPopup(element) {
+  element.style.opacity = 1;
+  element.style.transition = `opacity 1s ease`;
+  element.style.opacity = 0;
+  setTimeout(() => {
+    element.classList.remove('popup_opened');
+    element.style.opacity = 1;
+    element.style.transition = `opacity 1s ease`;
+  }, 200);
+}
+
+function openPopup(element) {
+  element.style.opacity = 0;
+  element.style.transition = `opacity 1s ease`;
+  element.style.opacity = 1;
+  setTimeout(() => {
+    element.classList.add('popup_opened');
+    element.style.opacity = 1;
+    element.style.transition = `opacity 1s ease`;
+  }, 200);
 }
 
 function formSubmitHandlerEdit(event) {
