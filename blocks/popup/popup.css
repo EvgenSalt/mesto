@@ -1,4 +1,7 @@
 .popup {
+  transition: 0.7s;
+  visibility: hidden;
+  opacity: 0;
   place-content: center;
   background-color: rgba(0, 0, 0, .5);
   position: fixed;
@@ -7,7 +10,4 @@
   left: 0;
   right: 0;
   display: grid;
-  transition: 0.7s;
-  visibility: hidden;
-  opacity: 0;
 }
