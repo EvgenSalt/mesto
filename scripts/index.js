@@ -28,7 +28,7 @@ const initialCards = [
 const btnEdit = document.querySelector('.profile__edit');
 const editForm = document.querySelector('.popup_edit');
 const addImgForm = document.querySelector('.popup_add');
-const showImg = document.querySelector('.popup_show');
+const showImg = document.querySelector('.popup_show-img');
 const btnCloseEditForm = editForm.querySelector('.popup__close_edit-form');
 const btnCloseAddImgForm = addImgForm.querySelector('.popup__close_add-img');
 const btnCloseShowImg = showImg.querySelector('.popup__close_show-img');
@@ -114,25 +114,11 @@ function closedShowImg() {
 }
 
 function closedPopup(element) {
-  element.style.opacity = 1;
-  element.style.transition = `opacity 1s ease`;
-  element.style.opacity = 0;
-  setTimeout(() => {
-    element.classList.remove('popup_opened');
-    element.style.opacity = 1;
-    element.style.transition = `opacity 1s ease`;
-  }, 200);
+  element.classList.remove('popup_show');
 }
 
 function openPopup(element) {
-  element.style.opacity = 0;
-  element.style.transition = `opacity 1s ease`;
-  element.style.opacity = 1;
-  setTimeout(() => {
-    element.classList.add('popup_opened');
-    element.style.opacity = 1;
-    element.style.transition = `opacity 1s ease`;
-  }, 200);
+  element.classList.add('popup_show');
 }
 
 function formSubmitHandlerEdit(event) {
