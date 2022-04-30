@@ -60,10 +60,13 @@ function getElementCard(item) {
   const btnImg = getElementTemplateCard.querySelector('.elements__img');
 
   imgCard.src = item.link;
+  imgCard.alt = item.name;
   nameCard.textContent = item.name;
 
   btnlike.addEventListener('click', () => btnlike.classList.toggle('elements__like_active'));
+
   btnTrash.addEventListener('click', handleDeletCard);
+
   btnImg.addEventListener('click', () => {
     popapImg.src = imgCard.src;
     popapNameImg.textContent = nameCard.textContent;
