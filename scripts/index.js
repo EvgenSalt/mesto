@@ -26,7 +26,7 @@ const initialCards = [
 ];
 
 const btnEdit = document.querySelector('.profile__edit');
-const editForm = document.querySelector('.popup__edit-form');
+const editForm = document.querySelector('.popup__edit_form');
 const addImgForm = document.querySelector('.popup__add-img');
 const showImg = document.querySelector('.popup__show-img');
 const btnCloseEditForm = editForm.querySelector('.popup__close_edit-form');
