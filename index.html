@@ -26,7 +26,7 @@
   </section>
   <section class="elements">
     <ul class="elements__items">
-      <li class="elements__item">
+      <!-- <li class="elements__item">
         <button aria-label="like" class="elements__trash" value="clicked" type="button"></button>
         <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Фото Карачаевск" class="elements__img">
         <div class="elements__footer">
@@ -85,7 +85,7 @@
           </h2>
           <button aria-label="like" class="elements__like" value="clicked" type="button"></button>
         </div>
-      </li>
+      </li> -->
     </ul>
   </section>
 
@@ -94,9 +94,9 @@
       © 2022 Mesto Russia
     </p>
   </footer>
-  <section class="popup">
+  <section class="popup popup__edit-form">
     <div class="popup__container">
-      <button aria-label="close" class="popup__close" type="button"></button>
+      <button aria-label="close" class="popup__close close__edit-form" type="button"></button>
       <form action="signin" method="post" class="form">
         <h3 class="form__title">
           Редактировать профиль
@@ -107,6 +107,30 @@
       </form>
     </div>
   </section>
+  <section class="popup popup__add-img">
+    <div class="popup__container">
+      <button aria-label="close" class="popup__close close__add-img" type="button"></button>
+      <form action="signin" method="post" class="form">
+        <h3 class="form__title">
+          Новое место
+        </h3>
+        <input type="text" name="username" placeholder="Название" class="form__input form__input_text_name" value="">
+        <input type="text" name="userwork" placeholder="Ссылка на картинку" class="form__input form__input_text_work"
+          value="">
+        <button aria-label="submit" class="form__btn" type="submit">Создать</button>
+      </form>
+    </div>
+  </section>
+  <template class="template__card">
+    <li class="elements__item">
+      <button aria-label="like" class="elements__trash" value="clicked" type="button"></button>
+      <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Фото" class="elements__img">
+      <div class="elements__footer">
+        <h2 class="elements__text"></h2>
+        <button aria-label="like" class="elements__like" value="clicked" type="button"></button>
+      </div>
+    </li>
+  </template>
   <script src="scripts/index.js"></script>
 </body>
 
