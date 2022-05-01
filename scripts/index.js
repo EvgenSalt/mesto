@@ -1,15 +1,15 @@
 const btnEdit = document.querySelector('.profile__edit');
 const formEdit = document.querySelector('.popup_edit');
-const addImgForm = document.querySelector('.popup_add');
+const imgAddForm = document.querySelector('.popup_add');
 const imgShow = document.querySelector('.popup_show-img');
 const btnCloseEditForm = formEdit.querySelector('.popup__close_edit-form');
-const btnCloseAddImgForm = addImgForm.querySelector('.popup__close_add-img');
+const btnCloseAddImgForm = imgAddForm.querySelector('.popup__close_add-img');
 const btnCloseShowImg = imgShow.querySelector('.popup__close_show-img');
 const formTitle = formEdit.querySelector('.form__title');
 const formInputName = formEdit.querySelector('.form__input_text_name');
 const formInputWork = formEdit.querySelector('.form__input_text_work');
-const formInputNameImg = addImgForm.querySelector('.form__input_text_name-img');
-const formInputSrcImg = addImgForm.querySelector('.form__input_text_src-img');
+const formInputNameImg = imgAddForm.querySelector('.form__input_text_name-img');
+const formInputSrcImg = imgAddForm.querySelector('.form__input_text_src-img');
 const profileName = document.querySelector('.profile__name');
 const profileWork = document.querySelector('.profile__description');
 const btnAddImg = document.querySelector('.profile__add');
@@ -66,25 +66,25 @@ function openEditForm() {
 }
 
 function openAddImgForm() {
-  openPopup(addImgForm);
+  openPopup(imgAddForm);
 }
 
 function closeEditForm() {
   fillInput();
-  closedPopup(formEdit);
+  closePopup(formEdit);
 }
 
-function closedAddImgForm() {
-  closedPopup(addImgForm);
+function closeAddImgForm() {
+  closePopup(imgAddForm);
   formInputNameImg.value = '';
   formInputSrcImg.value = '';
 }
 
-function closedShowImg() {
-  closedPopup(imgShow);
+function closeShowImg() {
+  closePopup(imgShow);
 }
 
-function closedPopup(element) {
+function closePopup(element) {
   element.classList.remove('popup_show');
 }
 
@@ -92,36 +92,36 @@ function openPopup(element) {
   element.classList.add('popup_show');
 }
 
-function formSubmitHandlerEdit(event) {
+function submitFormHandlerEdit(event) {
   event.preventDefault();
   profileName.textContent = formInputName.value;
   profileWork.textContent = formInputWork.value;
   closeEditForm();
 }
 
-function formSubmitHandlerAddImg(event) {
+function submitFormHandlerAddImg(event) {
   event.preventDefault();
   const inputValueImg = formInputNameImg.value;
   const inputSrcImg = formInputSrcImg.value;
   const element = getElementCard({ name: inputValueImg, link: inputSrcImg });
   listElements.prepend(element);
-  closedAddImgForm();
+  closeAddImgForm();
 }
 
 /*  функция закрытия формы при нажатии на оверлэй  */
 // function onOverlayClick(event) {
 //   if (event.target === event.currentTarget) {
-//     closedPopup(event.target);
+//     closePopup(event.target);
 //   }
 // }
 
 btnEdit.addEventListener('click', openEditForm);
 btnAddImg.addEventListener('click', openAddImgForm);
 btnCloseEditForm.addEventListener('click', closeEditForm);
-btnCloseAddImgForm.addEventListener('click', closedAddImgForm);
-btnCloseShowImg.addEventListener('click', closedShowImg);
-formEdit.addEventListener('submit', formSubmitHandlerEdit);
-addImgForm.addEventListener('submit', formSubmitHandlerAddImg);
+btnCloseAddImgForm.addEventListener('click', closeAddImgForm);
+btnCloseShowImg.addEventListener('click', closeShowImg);
+formEdit.addEventListener('submit', submitFormHandlerEdit);
+imgAddForm.addEventListener('submit', submitFormHandlerAddImg);
 
 
 renderCard();
