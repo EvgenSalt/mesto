@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+-<!DOCTYPE html>
 <html lang="ru">
 
 <head>
@@ -40,8 +40,29 @@
         <h3 class="form__title">
           Редактировать профиль
         </h3>
-        <input type="text" name="username" placeholder="name" class="form__input form__input_text_name" value="">
-        <input type="text" name="userwork" placeholder="work" class="form__input form__input_text_work" value="">
+
+        <input 
+        type="text" 
+        name="username" 
+        placeholder="name" 
+        class="form__input form__input_text_name" 
+        value=""
+        required
+        minlength="2"
+        maxlength="40"
+        id="name-input">
+
+        <input 
+        type="text" 
+        name="userwork" 
+        placeholder="work" 
+        class="form__input form__input_text_work" 
+        value=""
+        required
+        minlength="2"
+        maxlength="200"
+        id="work-input">
+
         <button aria-label="submit" class="form__btn" type="submit">Сохранить</button>
       </form>
     </div>

@@ -1,3 +1,4 @@
+const overlayPopup = document.querySelectorAll('.popup');
 const btnEdit = document.querySelector('.profile__edit');
 const formEdit = document.querySelector('.popup_edit');
 const imgAddForm = document.querySelector('.popup_add');
@@ -108,12 +109,19 @@ function submitFormHandlerAddImg(event) {
   closeAddImgForm();
 }
 
-/*  функция закрытия формы при нажатии на оверлэй  */
-// function onOverlayClick(event) {
-//   if (event.target === event.currentTarget) {
-//     closePopup(event.target);
-//   }
-// }
+function onOverlayClick(event) {
+  if (event.target === event.currentTarget) {
+    closePopup(event.target);
+    
+  }
+}
+
+function closeEscapeAllForm(event) {
+  if (event.key === 'Escape') {
+  closeEditForm();
+  closeAddImgForm();
+  }
+}
 
 btnEdit.addEventListener('click', openEditForm);
 btnAddImg.addEventListener('click', openAddImgForm);
@@ -122,6 +130,8 @@ btnCloseAddImgForm.addEventListener('click', closeAddImgForm);
 btnCloseShowImg.addEventListener('click', closeShowImg);
 formEdit.addEventListener('submit', submitFormHandlerEdit);
 imgAddForm.addEventListener('submit', submitFormHandlerAddImg);
-
+formEdit.addEventListener('click', onOverlayClick);
+imgAddForm.addEventListener('click', onOverlayClick);
+document.addEventListener('keydown', closeEscapeAllForm);
 
 renderCard();
