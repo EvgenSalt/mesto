@@ -45,6 +45,8 @@ function getElementCard(item) {
     openPopapShowImg();
   });
 
+  
+
   return getElementTemplateCard;
 }
 
@@ -120,6 +122,7 @@ function closeEscapeAllForm(event) {
   if (event.key === 'Escape') {
   closeEditForm();
   closeAddImgForm();
+  closeShowImg();
   }
 }
 
@@ -132,6 +135,7 @@ formEdit.addEventListener('submit', submitFormHandlerEdit);
 imgAddForm.addEventListener('submit', submitFormHandlerAddImg);
 formEdit.addEventListener('click', onOverlayClick);
 imgAddForm.addEventListener('click', onOverlayClick);
+imgShow.addEventListener('click', onOverlayClick);
 document.addEventListener('keydown', closeEscapeAllForm);
 
 renderCard();
