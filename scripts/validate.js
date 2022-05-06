@@ -23,17 +23,26 @@ function setEventListeners(formObject, formElement) {
 
 const checkInputValidity = (formObject, formElement, inputElement) => {
     if (!inputElement.validity.valid) {
-        console.log('Form no good');
+        console.log(inputElement.validationMessage);
+        showInputError(formObject, formElement, inputElement, inputElement.validationMessage);
     } else {
         console.log('Form good');
     }
-  };
+};
+
+const showInputError = (formObject, formElement, inputElement, errorMessage) => {
+    const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
+    console.log(inputElement.id);
+    errorElement.classList.add(formObject.inputErrorClass);
+    errorElement.textContent = errorMessage;
+    inputElement.classList.add(formObject.errorClass);
+};
 
 enableValidation({
     formSelector: '.form',
     inputSelector: '.form__input',
     submitButtonSelector: '.form__btn',
     inactiveButtonClass: 'form__btn_disabled',
-    inputErrorClass: 'form__input_type_error',
-    errorClass: 'form__error_visible'
+    inputErrorClass: 'form__msg_show',
+    errorClass: 'form__input_type_error'
 });

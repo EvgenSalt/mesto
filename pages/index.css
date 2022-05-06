@@ -33,4 +33,5 @@
 @import url(../blocks/form/__input/form__input.css);
 @import url(../blocks/form/__input/_type_error/form__input_type_error.css);
 @import url(../blocks/form/__msg/form__msg.css);
+@import url(../blocks/form/__msg/_show/form__msg_show.css);
 @import url(../blocks/form/__btn/form__btn.css);
