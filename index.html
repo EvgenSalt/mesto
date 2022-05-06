@@ -51,7 +51,7 @@
         minlength="2"
         maxlength="40"
         id="name-input">
-
+        <span class="form__msg" id="username-error">error</span>
         <input 
         type="text" 
         name="userwork" 
@@ -62,7 +62,7 @@
         minlength="2"
         maxlength="200"
         id="work-input">
-
+        <span class="form__msg" id="userwork-error">error</span>
         <button aria-label="submit" class="form__btn" type="submit">Сохранить</button>
       </form>
     </div>
@@ -84,7 +84,7 @@
         required
         minlength="2"
         maxlength="30">
-
+        <span class="form__msg" id="userwork-error">error</span>
         <input 
         type="url" 
         name="link-img" 
@@ -92,6 +92,7 @@
         class="form__input form__input_text_src-img"
         value=""
         required>
+        <span class="form__msg" id="userwork-error">error</span>
         <button aria-label="submit" class="form__btn" type="submit">Создать</button>
       </form>
     </div>

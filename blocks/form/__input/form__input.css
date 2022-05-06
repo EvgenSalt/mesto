@@ -7,18 +7,14 @@
   font-size: 14px;
   line-height: 17px;
   padding-bottom: 7px;
-  margin: 0 auto 32px;
+  margin: 0 auto 5px;
 }
 
 @media (max-width: 525px) {
   .form__input {
     width: 238px;
     height: 14px;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 17px;
-    margin: 0 0 31px 20px;
+    margin: 0 0 5px 20px;
     padding-bottom: 10px;
   }
 }
