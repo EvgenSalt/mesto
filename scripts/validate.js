@@ -26,7 +26,7 @@ const checkInputValidity = (formObject, formElement, inputElement) => {
         console.log(inputElement.validationMessage);
         showInputError(formObject, formElement, inputElement, inputElement.validationMessage);
     } else {
-        console.log('Form good');
+        hideInputError(formObject, formElement, inputElement);
     }
 };
 
@@ -37,6 +37,14 @@ const showInputError = (formObject, formElement, inputElement, errorMessage) => 
     errorElement.textContent = errorMessage;
     inputElement.classList.add(formObject.errorClass);
 };
+
+const hideInputError = (formObject, formElement, inputElement) => {
+    const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
+    
+    errorElement.classList.remove(formObject.errorClass);
+    errorElement.textContent = '';
+    inputElement.classList.remove(formObject.inputErrorClass);
+  };
 
 enableValidation({
     formSelector: '.form',
