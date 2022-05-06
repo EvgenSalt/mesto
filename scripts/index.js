@@ -70,6 +70,8 @@ function openEditForm() {
 }
 
 function openAddImgForm() {
+  formInputNameImg.value = '';
+  formInputSrcImg.value = '';
   openPopup(imgAddForm);
 }
 
@@ -79,8 +81,6 @@ function closeEditForm() {
 
 function closeAddImgForm() {
   closePopup(imgAddForm);
-  formInputNameImg.value = '';
-  formInputSrcImg.value = '';
 }
 
 function closeShowImg() {
@@ -89,11 +89,13 @@ function closeShowImg() {
 
 function closePopup(element) {
   element.classList.remove('popup_show');
+  document.removeEventListener('keydown', closeEscapeAllForm);
+  clearMsgError();
 }
 
 function openPopup(element) {
   element.classList.add('popup_show');
-  clearMsgError();
+  document.addEventListener('keydown', closeEscapeAllForm);
 }
 
 function submitFormHandlerEdit(event) {
@@ -121,9 +123,8 @@ function onOverlayClick(event) {
 
 function closeEscapeAllForm(event) {
   if (event.key === 'Escape') {
-  closeEditForm();
-  closeAddImgForm();
-  closeShowImg();
+  const openedPopup = document.querySelector('.popup_show');
+  closePopup(openedPopup);
   }
 }
 
@@ -137,6 +138,5 @@ imgAddForm.addEventListener('submit', submitFormHandlerAddImg);
 formEdit.addEventListener('click', onOverlayClick);
 imgAddForm.addEventListener('click', onOverlayClick);
 imgShow.addEventListener('click', onOverlayClick);
-document.addEventListener('keydown', closeEscapeAllForm);
 
 renderCard();

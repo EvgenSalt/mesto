@@ -53,19 +53,17 @@ function toggleButton(formObject, formElement) {
 }
 
 function clearMsgError() {
-
-    const forms = Array.from(document.querySelectorAll('.form'));
     
+    const forms = Array.from(document.querySelectorAll('.form'));
+
     forms.forEach((formElement) => {
-        
         const msg = Array.from(formElement.querySelectorAll(`.form__msg_show`));
         const type = Array.from(formElement.querySelectorAll(`.form__input_type_error`));
         const btn = Array.from(formElement.querySelectorAll(`.form__btn`));
 
-        btn.disabled = !formElement.checkValidity();
-       
-        console.log(msg);
-        console.log(type);
+        // console.log(btn);
+        // console.log(msg);
+        // console.log(type);
         msg.forEach((massege) => {
             console.log(massege);
             massege.textContent = '';
@@ -75,7 +73,8 @@ function clearMsgError() {
             types.classList.remove(`form__input_type_error`);
         });
         btn.forEach((button) => {
-            console.log(button);
+            // console.log(button);
+            button.disabled = true;
             button.classList.add(`form__btn_disabled`);
         });
     });            
