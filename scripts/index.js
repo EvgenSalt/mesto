@@ -41,6 +41,7 @@ function getElementCard(item) {
 
   imgCard.addEventListener('click', () => {
     popapImg.src = imgCard.src;
+    popapImg.alt = imgCard.alt;
     popapNameImg.textContent = nameCard.textContent;
     openPopapShowImg();
   });
@@ -73,7 +74,6 @@ function openAddImgForm() {
 }
 
 function closeEditForm() {
-  fillInput();
   closePopup(formEdit);
 }
 
@@ -89,16 +89,11 @@ function closeShowImg() {
 
 function closePopup(element) {
   element.classList.remove('popup_show');
-  
 }
 
 function openPopup(element) {
   element.classList.add('popup_show');
-  clearMsgError({
-    formSelector: '.form',
-    inputErrorClass: 'form__msg_show',
-    errorClass: 'form__input_type_error'
-  });
+  clearMsgError();
 }
 
 function submitFormHandlerEdit(event) {
