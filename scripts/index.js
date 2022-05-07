@@ -65,11 +65,13 @@ function fillInput() {
 }
 
 function openEditForm() {
+  clearMsgError();
   fillInput();
   openPopup(formEdit);
 }
 
 function openAddImgForm() {
+  clearMsgError();
   formInputNameImg.value = '';
   formInputSrcImg.value = '';
   openPopup(imgAddForm);

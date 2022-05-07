@@ -51,7 +51,7 @@ function toggleButton(formObject, formElement) {
     buttom.disabled = !formElement.checkValidity();
     buttom.classList.toggle(formObject.inactiveButtonClass, !formElement.checkValidity());
 }
-//TO DO function clearMsgError
+
 function clearMsgError() {
     
     const forms = Array.from(document.querySelectorAll('.form'));
@@ -65,11 +65,11 @@ function clearMsgError() {
         // console.log(msg);
         // console.log(type);
         msg.forEach((massege) => {
-            console.log(massege);
+            // console.log(massege);
             massege.textContent = '';
         });
         type.forEach((types) => {
-            console.log(types);
+            // console.log(types);
             types.classList.remove(`form__input_type_error`);
         });
         btn.forEach((button) => {
