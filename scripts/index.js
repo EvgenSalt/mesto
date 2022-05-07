@@ -90,7 +90,6 @@ function closeShowImg() {
 function closePopup(element) {
   element.classList.remove('popup_show');
   document.removeEventListener('keydown', closeEscapeAllForm);
-  clearMsgError();
 }
 
 function openPopup(element) {

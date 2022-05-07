@@ -51,7 +51,7 @@ function toggleButton(formObject, formElement) {
     buttom.disabled = !formElement.checkValidity();
     buttom.classList.toggle(formObject.inactiveButtonClass, !formElement.checkValidity());
 }
-
+//TO DO function clearMsgError
 function clearMsgError() {
     
     const forms = Array.from(document.querySelectorAll('.form'));
