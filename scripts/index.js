@@ -1,7 +1,7 @@
 import Card from "./Card.js";
 import { initialCards } from "./Card.js";
+import FormValidator from "./FormValidator.js";
 
-const overlayPopup = document.querySelectorAll('.popup');
 const btnEdit = document.querySelector('.profile__edit');
 const formEdit = document.querySelector('.popup_edit');
 const imgAddForm = document.querySelector('.popup_add');
@@ -9,7 +9,6 @@ const imgShow = document.querySelector('.popup_show-img');
 const btnCloseEditForm = formEdit.querySelector('.popup__close_edit-form');
 const btnCloseAddImgForm = imgAddForm.querySelector('.popup__close_add-img');
 const btnCloseShowImg = imgShow.querySelector('.popup__close_show-img');
-const formTitle = formEdit.querySelector('.form__title');
 const formInputName = formEdit.querySelector('.form__input_text_name');
 const formInputWork = formEdit.querySelector('.form__input_text_work');
 const formInputNameImg = imgAddForm.querySelector('.form__input_text_name-img');
@@ -18,9 +17,17 @@ const profileName = document.querySelector('.profile__name');
 const profileWork = document.querySelector('.profile__description');
 const btnAddImg = document.querySelector('.profile__add');
 const listElements = document.querySelector('.elements__items');
-const templateCard = document.querySelector('.template__card');
-const popapImg = document.querySelector('.popup__img');
-const popapNameImg = document.querySelector('.popup__text');
+
+const validator = new FormValidator({
+  formSelector: '.form',
+  inputSelector: '.form__input',
+  submitButtonSelector: '.form__btn',
+  inactiveButtonClass: 'form__btn_disabled',
+  inputErrorClass: 'form__msg_show',
+  errorClass: 'form__input_type_error'
+});
+
+validator.enableValidation();
 
 function renderCard() {
   initialCards.forEach(el => {
@@ -28,42 +35,7 @@ function renderCard() {
     const renderCard = cardHTML.getElementCard();
     listElements.append(renderCard);
   })
-
 }
-
-//+
-// function getElementCard(item) {
-//   const getElementTemplateCard = templateCard.content.cloneNode(true);
-//   const nameCard = getElementTemplateCard.querySelector('.elements__text');
-//   const imgCard = getElementTemplateCard.querySelector('.elements__img');
-//   const btnlike = getElementTemplateCard.querySelector('.elements__like');
-//   const btnTrash = getElementTemplateCard.querySelector('.elements__trash');
-
-//   imgCard.src = item.link;
-//   imgCard.alt = item.name;
-//   nameCard.textContent = item.name;
-
-//   btnlike.addEventListener('click', () => btnlike.classList.toggle('elements__like_active'));
-
-//   btnTrash.addEventListener('click', handleDeletCard);
-
-//   imgCard.addEventListener('click', () => {
-//     popapImg.src = imgCard.src;
-//     popapImg.alt = imgCard.alt;
-//     popapNameImg.textContent = nameCard.textContent;
-//     openPopapShowImg();
-//   });
-//   return getElementTemplateCard;
-// }
-
-// function openPopapShowImg() {
-//   openPopup(imgShow);
-// }
-
-//+
-// function handleDeletCard(event) {
-//   const element = event.target.closest('.elements__item').remove();
-// }
 
 function fillInput() {
   formInputName.value = profileName.textContent;
@@ -71,13 +43,13 @@ function fillInput() {
 }
 
 function openEditForm() {
-  clearMsgError();
+  validator.clearMsgError();
   fillInput();
   openPopup(formEdit);
 }
 
 function openAddImgForm() {
-  clearMsgError();
+  validator.clearMsgError();
   formInputNameImg.value = '';
   formInputSrcImg.value = '';
   openPopup(imgAddForm);
@@ -116,17 +88,17 @@ function submitFormHandlerAddImg(event) {
   event.preventDefault();
   const inputValueImg = formInputNameImg.value;
   const inputSrcImg = formInputSrcImg.value;
-  // const element = getElementCard({ name: inputValueImg, link: inputSrcImg });
+
   const element = new Card({ name: inputValueImg, link: inputSrcImg }, '.template__card');
   const addCard = element.getElementCard();
   listElements.prepend(addCard);
+
   closeAddImgForm();
 }
 
 function onOverlayClick(event) {
   if (event.target === event.currentTarget) {
     closePopup(event.target);
-
   }
 }
 
