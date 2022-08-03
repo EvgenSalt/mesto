@@ -23,45 +23,45 @@ export default class FormValidator {
       formElement.addEventListener('submit', (event) => {
         event.preventDefault();
       });
-      this.setEventListeners(formElement);
+      this._setEventListeners(formElement);
     });
   }
 
-  setEventListeners = (formElement) => {
+  _setEventListeners = (formElement) => {
     const inputs = Array.from(formElement.querySelectorAll(this._inputSelector));
 
-    this.toggleButton(formElement);
+    this._toggleButton(formElement);
     inputs.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
-        this.checkInputValidity(formElement, inputElement);
-        this.toggleButton(formElement);
+        this._checkInputValidity(formElement, inputElement);
+        this._toggleButton(formElement);
       });
     });
   }
 
-  toggleButton = (formElement) => {
+  _toggleButton = (formElement) => {
     const buttom = formElement.querySelector(this._submitButtonSelector);
 
     buttom.disabled = !formElement.checkValidity();
     buttom.classList.toggle(formObject.inactiveButtonClass, !formElement.checkValidity());
   }
 
-  checkInputValidity = (formElement, inputElement) => {
+  _checkInputValidity = (formElement, inputElement) => {
     if (!inputElement.validity.valid) {
-      this.showInputError(formElement, inputElement, inputElement.validationMessage);
+      this._showInputError(formElement, inputElement, inputElement.validationMessage);
     } else {
-      this.hideInputError(formElement, inputElement);
+      this._hideInputError(formElement, inputElement);
     }
   };
 
-  toggleButton = (formElement) => {
+  _toggleButton = (formElement) => {
     const buttom = formElement.querySelector(this._submitButtonSelector);
 
     buttom.disabled = !formElement.checkValidity();
     buttom.classList.toggle(this._inactiveButtonClass, !formElement.checkValidity());
   }
 
-  showInputError = (formElement, inputElement, errorMessage) => {
+  _showInputError = (formElement, inputElement, errorMessage) => {
     const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
 
     errorElement.classList.add(this._inputErrorClass);
@@ -69,7 +69,7 @@ export default class FormValidator {
     inputElement.classList.add(this._errorClass);
   };
 
-  hideInputError = (formElement, inputElement) => {
+  _hideInputError = (formElement, inputElement) => {
     const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
 
     errorElement.classList.remove(this._errorClass);
