@@ -1,5 +1,5 @@
 import Card from "./Card.js";
-import { initialCards } from "./Card.js";
+import { initialCards, openPopup, closePopup, onOverlayClick, closeEscapeAllForm } from "./utils.js";
 import FormValidator from "./FormValidator.js";
 
 const btnEdit = document.querySelector('.profile__edit');
@@ -18,6 +18,12 @@ const profileWork = document.querySelector('.profile__description');
 const btnAddImg = document.querySelector('.profile__add');
 const listElements = document.querySelector('.elements__items');
 
+function createCard(nameCard, linkCard) {
+  return new Card(nameCard, linkCard, '.template__card');
+}
+function createValidator(validatorClass, validatorForm) {
+  return new FormValidator(validatorClass, validatorForm);
+}
 const validator = new FormValidator({
   formSelector: '.form',
   inputSelector: '.form__input',
@@ -26,14 +32,16 @@ const validator = new FormValidator({
   inputErrorClass: 'form__msg_show',
   errorClass: 'form__input_type_error'
 });
-
+const formValidator1 = createValidator(validator, ".popup_add");
+const formValidator2 = createValidator(validator, ".popup_edit");
 validator.enableValidation();
-
+//formValidator1.TESTenableValidation();
+//formValidator2.TESTenableValidation();
 function renderCard() {
   initialCards.forEach(el => {
-    const cardHTML = new Card(el, '.template__card')
-    const renderCard = cardHTML.getElementCard();
-    listElements.append(renderCard);
+    const cardHTML = createCard(el, '.template__card')
+    const cardRender = cardHTML.getElementCard();
+    listElements.append(cardRender);
   })
 }
 
@@ -43,13 +51,18 @@ function fillInput() {
 }
 
 function openEditForm() {
-  validator.clearMsgError();
+  //const formValidator = createValidator(validator, ".popup_edit");
+  //formValidator.enableValidation();
+  //validator.clearMsgError();
   fillInput();
   openPopup(formEdit);
 }
 
 function openAddImgForm() {
-  validator.clearMsgError();
+  //const formValidator = createValidator(validator, ".popup_add");
+
+  //formValidator.enableValidation();
+  //validator.clearMsgError();
   formInputNameImg.value = '';
   formInputSrcImg.value = '';
   openPopup(imgAddForm);
@@ -67,15 +80,12 @@ function closeShowImg() {
   closePopup(imgShow);
 }
 
-function closePopup(element) {
-  element.classList.remove('popup_show');
-  document.removeEventListener('keydown', closeEscapeAllForm);
-}
 
-function openPopup(element) {
-  element.classList.add('popup_show');
-  document.addEventListener('keydown', closeEscapeAllForm);
-}
+
+// function openPopup(element) {
+//   element.classList.add('popup_show');
+//   document.addEventListener('keydown', closeEscapeAllForm);
+// }
 
 function submitFormHandlerEdit(event) {
   event.preventDefault();
@@ -89,24 +99,11 @@ function submitFormHandlerAddImg(event) {
   const inputValueImg = formInputNameImg.value;
   const inputSrcImg = formInputSrcImg.value;
 
-  const element = new Card({ name: inputValueImg, link: inputSrcImg }, '.template__card');
-  const addCard = element.getElementCard();
-  listElements.prepend(addCard);
+  const element = createCard({ name: inputValueImg, link: inputSrcImg }, '.template__card');
+  const cardAdd = element.getElementCard();
+  listElements.prepend(cardAdd);
 
   closeAddImgForm();
-}
-
-function onOverlayClick(event) {
-  if (event.target === event.currentTarget) {
-    closePopup(event.target);
-  }
-}
-
-function closeEscapeAllForm(event) {
-  if (event.key === 'Escape') {
-    const openedPopup = document.querySelector('.popup_show');
-    closePopup(openedPopup);
-  }
 }
 
 btnEdit.addEventListener('click', openEditForm);
