@@ -25,6 +25,15 @@ const initialCards = [
   }
 ];
 
+const validatorData = {
+  // formSelector: '.form',
+  inputSelector: '.form__input',
+  submitButtonSelector: '.form__btn',
+  inactiveButtonClass: 'form__btn_disabled',
+  inputErrorClass: 'form__msg_show',
+  errorClass: 'form__input_type_error'
+};
+
 function openPopup(element) {
   element.classList.add('popup_show');
   document.addEventListener('keydown', closeEscapeAllForm);
@@ -46,4 +55,4 @@ function closeEscapeAllForm(event) {
     closePopup(openedPopup);
   }
 }
-export { initialCards, openPopup, closePopup, onOverlayClick, closeEscapeAllForm }
+export { initialCards, validatorData, openPopup, closePopup, onOverlayClick, closeEscapeAllForm }

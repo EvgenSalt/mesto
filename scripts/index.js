@@ -1,5 +1,5 @@
 import Card from "./Card.js";
-import { initialCards, openPopup, closePopup, onOverlayClick, closeEscapeAllForm } from "./utils.js";
+import { initialCards, validatorData, openPopup, closePopup, onOverlayClick, closeEscapeAllForm } from "./utils.js";
 import FormValidator from "./FormValidator.js";
 
 const btnEdit = document.querySelector('.profile__edit');
@@ -21,22 +21,14 @@ const listElements = document.querySelector('.elements__items');
 function createCard(nameCard, linkCard) {
   return new Card(nameCard, linkCard, '.template__card');
 }
+
 function createValidator(validatorClass, validatorForm) {
   return new FormValidator(validatorClass, validatorForm);
 }
-const validator = new FormValidator({
-  formSelector: '.form',
-  inputSelector: '.form__input',
-  submitButtonSelector: '.form__btn',
-  inactiveButtonClass: 'form__btn_disabled',
-  inputErrorClass: 'form__msg_show',
-  errorClass: 'form__input_type_error'
-});
-const formValidator1 = createValidator(validator, ".popup_add");
-const formValidator2 = createValidator(validator, ".popup_edit");
-validator.enableValidation();
-//formValidator1.TESTenableValidation();
-//formValidator2.TESTenableValidation();
+
+const formValidator1 = createValidator(validatorData, ".form_edit");
+const formValidator2 = createValidator(validatorData, ".form_add");
+
 function renderCard() {
   initialCards.forEach(el => {
     const cardHTML = createCard(el, '.template__card')
@@ -51,18 +43,15 @@ function fillInput() {
 }
 
 function openEditForm() {
-  //const formValidator = createValidator(validator, ".popup_edit");
-  //formValidator.enableValidation();
-  //validator.clearMsgError();
+  formValidator1.enableValidation();
+  formValidator1.clearMsgError();
   fillInput();
   openPopup(formEdit);
 }
 
 function openAddImgForm() {
-  //const formValidator = createValidator(validator, ".popup_add");
-
-  //formValidator.enableValidation();
-  //validator.clearMsgError();
+  formValidator2.enableValidation();
+  formValidator2.clearMsgError();
   formInputNameImg.value = '';
   formInputSrcImg.value = '';
   openPopup(imgAddForm);
@@ -79,13 +68,6 @@ function closeAddImgForm() {
 function closeShowImg() {
   closePopup(imgShow);
 }
-
-
-
-// function openPopup(element) {
-//   element.classList.add('popup_show');
-//   document.addEventListener('keydown', closeEscapeAllForm);
-// }
 
 function submitFormHandlerEdit(event) {
   event.preventDefault();
