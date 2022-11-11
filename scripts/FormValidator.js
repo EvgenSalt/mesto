@@ -73,7 +73,6 @@ export default class FormValidator {
     errorElement.classList.remove(this._inputErrorClass);
     errorElement.textContent = '';
     inputElement.classList.remove(this._errorClass);
-
   };
 
   clearMsgError = () => {
