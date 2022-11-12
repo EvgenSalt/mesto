@@ -26,7 +26,7 @@ const initialCards = [
 ];
 
 const validatorData = {
-  // formSelector: '.form',
+  formSelector: '.form',
   inputSelector: '.form__input',
   submitButtonSelector: '.form__btn',
   inactiveButtonClass: 'form__btn_disabled',

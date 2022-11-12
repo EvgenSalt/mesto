@@ -28,6 +28,7 @@ function createValidator(validatorClass, validatorForm) {
 
 const profileFormValidator = createValidator(validatorData, ".form_edit");
 profileFormValidator.enableValidation();
+
 const cardFormValidator = createValidator(validatorData, ".form_add");
 cardFormValidator.enableValidation();
 
@@ -44,17 +45,15 @@ function fillInput() {
 }
 
 function openEditForm() {
-  // profileFormValidator.enableValidation();
-  profileFormValidator.clearMsgError();
+  profileFormValidator.resetValidation();
   fillInput();
   openPopup(formEdit);
 }
 
 function openAddImgForm() {
-  // cardFormValidator.enableValidation();
-  cardFormValidator.clearMsgError();
-  formInputNameImg.value = '';
-  formInputSrcImg.value = '';
+  cardFormValidator.resetValidation();
+  // formInputNameImg.value = '';
+  // formInputSrcImg.value = '';
   openPopup(imgAddForm);
 }
 

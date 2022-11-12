@@ -4,6 +4,11 @@ export default class Card {
   _link;
   _template;
   _element;
+  _nameCard;
+  _imgCard;
+  _btnlike;
+  _btnTrash;
+
 
   constructor(data, template) {
     this._name = data.name;
@@ -21,34 +26,31 @@ export default class Card {
 
   getElementCard = () => {
     this._element = this._getElementTemplateCard();
-    const nameCard = this._element.querySelector('.elements__text');
-    const imgCard = this._element.querySelector('.elements__img');
+    this._nameCard = this._element.querySelector('.elements__text');
+    this._imgCard = this._element.querySelector('.elements__img');
+    this._btnlike = this._element.querySelector('.elements__like');
+    this._btnTrash = this._element.querySelector('.elements__trash');
 
-    imgCard.src = this._link;
-    imgCard.alt = this._name;
-    nameCard.textContent = this._name;
+    this._imgCard.src = this._link;
+    this._imgCard.alt = this._name;
+    this._nameCard.textContent = this._name;
     this._setEventListeners();
 
     return this._element;
   }
   _setEventListeners() {
-    const nameCard = this._element.querySelector('.elements__text');
-    const imgCard = this._element.querySelector('.elements__img');
-    const btnlike = this._element.querySelector('.elements__like');
-    const btnTrash = this._element.querySelector('.elements__trash');
-
-    btnlike.addEventListener('click', () => { // toggle like
-      btnlike.classList.toggle('elements__like_active');
+    this._btnlike.addEventListener('click', () => { // toggle like
+      this._btnlike.classList.toggle('elements__like_active');
     });
 
-    btnTrash.addEventListener('click', (e) => { // delete card
+    this._btnTrash.addEventListener('click', (e) => { // delete card
       e.target.closest('.elements__item').remove();
     });
 
-    imgCard.addEventListener('click', () => {
-      this._popapImg.src = imgCard.src;
-      this._popapImg.alt = imgCard.alt;
-      this._popapNameImg.textContent = nameCard.textContent;
+    this._imgCard.addEventListener('click', () => {
+      this._popapImg.src = this._imgCard.src;
+      this._popapImg.alt = this._imgCard.alt;
+      this._popapNameImg.textContent = this._nameCard.textContent;
       openPopup(this._imgShow);
     });
   }
