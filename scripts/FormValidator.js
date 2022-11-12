@@ -22,7 +22,6 @@ export default class FormValidator {
   }
 
   enableValidation = () => {
-    const forms = this._inputList;
     this._inputList.forEach((formElement) => {
       this._validatorElement = formElement;
       this._validatorElement.addEventListener('submit', (event) => {

@@ -19,20 +19,21 @@ const btnAddImg = document.querySelector('.profile__add');
 const listElements = document.querySelector('.elements__items');
 
 function createCard(nameCard, linkCard) {
-  return new Card(nameCard, linkCard, '.template__card');
+  return new Card(nameCard, linkCard, '.template__card').getElementCard();;
 }
 
 function createValidator(validatorClass, validatorForm) {
   return new FormValidator(validatorClass, validatorForm);
 }
 
-const formValidator1 = createValidator(validatorData, ".form_edit");
-const formValidator2 = createValidator(validatorData, ".form_add");
+const profileFormValidator = createValidator(validatorData, ".form_edit");
+profileFormValidator.enableValidation();
+const cardFormValidator = createValidator(validatorData, ".form_add");
+cardFormValidator.enableValidation();
 
 function renderCard() {
   initialCards.forEach(el => {
-    const cardHTML = createCard(el, '.template__card')
-    const cardRender = cardHTML.getElementCard();
+    const cardRender = createCard(el, '.template__card');
     listElements.append(cardRender);
   })
 }
@@ -43,15 +44,15 @@ function fillInput() {
 }
 
 function openEditForm() {
-  formValidator1.enableValidation();
-  formValidator1.clearMsgError();
+  // profileFormValidator.enableValidation();
+  profileFormValidator.clearMsgError();
   fillInput();
   openPopup(formEdit);
 }
 
 function openAddImgForm() {
-  formValidator2.enableValidation();
-  formValidator2.clearMsgError();
+  // cardFormValidator.enableValidation();
+  cardFormValidator.clearMsgError();
   formInputNameImg.value = '';
   formInputSrcImg.value = '';
   openPopup(imgAddForm);
@@ -81,8 +82,7 @@ function submitFormHandlerAddImg(event) {
   const inputValueImg = formInputNameImg.value;
   const inputSrcImg = formInputSrcImg.value;
 
-  const element = createCard({ name: inputValueImg, link: inputSrcImg }, '.template__card');
-  const cardAdd = element.getElementCard();
+  const cardAdd = createCard({ name: inputValueImg, link: inputSrcImg }, '.template__card');
   listElements.prepend(cardAdd);
 
   closeAddImgForm();

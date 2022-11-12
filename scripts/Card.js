@@ -9,6 +9,9 @@ export default class Card {
     this._name = data.name;
     this._link = data.link;
     this._template = template;
+    this._imgShow = document.querySelector('.popup_show-img');
+    this._popapImg = document.querySelector('.popup__img');
+    this._popapNameImg = document.querySelector('.popup__text');
   }
 
   _getElementTemplateCard = () => {
@@ -33,9 +36,6 @@ export default class Card {
     const imgCard = this._element.querySelector('.elements__img');
     const btnlike = this._element.querySelector('.elements__like');
     const btnTrash = this._element.querySelector('.elements__trash');
-    const imgShow = document.querySelector('.popup_show-img');
-    const popapImg = document.querySelector('.popup__img');
-    const popapNameImg = document.querySelector('.popup__text');
 
     btnlike.addEventListener('click', () => { // toggle like
       btnlike.classList.toggle('elements__like_active');
@@ -46,10 +46,10 @@ export default class Card {
     });
 
     imgCard.addEventListener('click', () => {
-      popapImg.src = imgCard.src;
-      popapImg.alt = imgCard.alt;
-      popapNameImg.textContent = nameCard.textContent;
-      openPopup(imgShow);
+      this._popapImg.src = imgCard.src;
+      this._popapImg.alt = imgCard.alt;
+      this._popapNameImg.textContent = nameCard.textContent;
+      openPopup(this._imgShow);
     });
   }
 }
