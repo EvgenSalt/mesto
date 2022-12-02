@@ -1,6 +1,15 @@
 import Card from "./Card.js";
-import { initialCards, validatorData, openPopup, closePopup, onOverlayClick, closeEscapeAllForm } from "./utils.js";
+import {
+  initialCards,
+  validatorData,
+  // openPopup,
+  closePopup,
+  onOverlayClick,
+  closeEscapeAllForm
+} from "./utils.js";
+import Section from "./Section.js";
 import FormValidator from "./FormValidator.js";
+import PopupWithImage from "./PopupWithImage.js";
 
 const btnEdit = document.querySelector('.profile__edit');
 const formEdit = document.querySelector('.popup_edit');
@@ -18,13 +27,30 @@ const profileWork = document.querySelector('.profile__description');
 const btnAddImg = document.querySelector('.profile__add');
 const listElements = document.querySelector('.elements__items');
 
-function createCard(nameCard, linkCard) {
-  return new Card(nameCard, linkCard, '.template__card').getElementCard();;
+const showImg = new PopupWithImage(imgShow);
+
+function createCard(nameCard) {
+  return new Card(
+    nameCard,
+    '.template__card',
+    function showFullImg() {
+      showImg.open(nameCard);
+    },
+  ).getElementCard();
 }
 
 function createValidator(validatorClass, validatorForm) {
   return new FormValidator(validatorClass, validatorForm);
 }
+
+const cardsList = new Section({
+  // data: messageList,
+  renderer: (item) => {
+    cardsList.addItem(createCard(item));
+  },
+},
+  listElements
+);
 
 const profileFormValidator = createValidator(validatorData, ".form_edit");
 profileFormValidator.enableValidation();
@@ -33,11 +59,19 @@ const cardFormValidator = createValidator(validatorData, ".form_add");
 cardFormValidator.enableValidation();
 
 function renderCard() {
-  initialCards.forEach(el => {
-    const cardRender = createCard(el, '.template__card');
-    listElements.append(cardRender);
-  })
+  cardsList.renderStartCards(initialCards.map((item) => {
+    return ({
+      name: item.name,
+      link: item.link,
+    })
+  }));
+  // initialCards.forEach(el => {
+  //   const cardRender = createCard(el);
+  //   cardsList.addItem(cardRender);
+  // })
 }
+
+
 
 function fillInput() {
   formInputName.value = profileName.textContent;
@@ -52,8 +86,6 @@ function openEditForm() {
 
 function openAddImgForm() {
   cardFormValidator.resetValidation();
-  // formInputNameImg.value = '';
-  // formInputSrcImg.value = '';
   openPopup(imgAddForm);
 }
 
@@ -81,8 +113,12 @@ function submitFormHandlerAddImg(event) {
   const inputValueImg = formInputNameImg.value;
   const inputSrcImg = formInputSrcImg.value;
 
-  const cardAdd = createCard({ name: inputValueImg, link: inputSrcImg }, '.template__card');
-  listElements.prepend(cardAdd);
+  const cardAdd = createCard({
+    name: inputValueImg,
+    link: inputSrcImg
+  });
+  //listElements.prepend(cardAdd);
+  cardsList.addItem(cardAdd);
 
   closeAddImgForm();
 }

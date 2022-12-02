@@ -34,10 +34,10 @@ const validatorData = {
   errorClass: 'form__input_type_error'
 };
 
-function openPopup(element) {
-  element.classList.add('popup_show');
-  document.addEventListener('keydown', closeEscapeAllForm);
-}
+// function openPopup(element) {
+//   element.classList.add('popup_show');
+//   document.addEventListener('keydown', closeEscapeAllForm);
+// }
 function closePopup(element) {
   element.classList.remove('popup_show');
   document.removeEventListener('keydown', closeEscapeAllForm);
@@ -55,4 +55,4 @@ function closeEscapeAllForm(event) {
     closePopup(openedPopup);
   }
 }
-export { initialCards, validatorData, openPopup, closePopup, onOverlayClick, closeEscapeAllForm }
+export { initialCards, validatorData, /*openPopup,*/ closePopup, onOverlayClick, closeEscapeAllForm }

@@ -1,0 +1,22 @@
+{
+  "name": "yandex_praktikum",
+  "version": "0.0.1",
+  "description": "Одностраничный адаптивный сайт. В рамках  обучения в [Яндекс.Практикум](https://practicum.yandex.ru/).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EvgenSalt/mesto.git"
+  },
+  "author": "Evgeniy Saltykov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EvgenSalt/mesto/issues"
+  },
+  "homepage": "https://github.com/EvgenSalt/mesto#readme",
+  "keywords": [
+    "Mesto"
+  ]
+}
