@@ -8,6 +8,7 @@ export default class Card {
   _imgCard;
   _btnlike;
   _btnTrash;
+  _showFullImg;
 
   constructor(data, template, showFullImg) {
     this._name = data.name;

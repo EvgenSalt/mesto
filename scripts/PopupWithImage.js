@@ -2,6 +2,8 @@
 Создайте класс PopupWithImage, который наследует от Popup
 */
 import Popup from "./Popup.js";
+_popapImg;
+_popapNameImg;
 
 export default class PopupWithImage extends Popup {
   constructor(selectorPopup) {
