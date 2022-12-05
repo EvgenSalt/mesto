@@ -6,19 +6,19 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./pages/index.css">
+  <!-- <link rel="stylesheet" href="./pages/index.css"> -->
   <link rel="shortcut icon" href="#">
   <title>Mesto</title>
 </head>
 
 <body class="page">
   <header class="header">
-    <img src="./images/logo.svg" alt="логотип Место" class="logo">
+    <img src="<%=require('./images/logo.svg')%>" alt="логотип Место" class="logo">
   </header>
 
   <section class="profile">
     <div class="profile__info">
-      <img src="./images/image.jpg" alt="Аватарка" class="profile__avatar">
+      <img src="<%=require('./images/image.jpg')%>" alt="Аватарка" class="profile__avatar">
       <h1 class="profile__name">Жак-Ив Кусто</h1>
       <p class="profile__description">Исследователь океана</p>
       <button aria-label="edit" class="profile__edit" value="clicked" type="button"></button>
@@ -74,7 +74,7 @@
     <div class="popup__container">
       <button aria-label="close" class="popup__close popup__close_show-img" type="button"></button>
       <div class="popup__card">
-        <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Фото" class="popup__img">
+        <img src="<%=require('./images/kirill-pershin-1088404-unsplash.jpg')%>" alt="Фото" class="popup__img">
         <h3 class="popup__text">
           Карачаево-Черкессия
         </h3>
@@ -84,14 +84,15 @@
   <template class="template__card">
     <li class="elements__item">
       <button aria-label="like" class="elements__trash" value="clicked" type="button"></button>
-      <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="упс... фото нет" class="elements__img">
+      <img src="<%=require('./images/kirill-pershin-1088404-unsplash.jpg')%>" alt="упс... фото нет"
+        class="elements__img">
       <div class="elements__footer">
         <h2 class="elements__text"></h2>
         <button aria-label="like" class="elements__like" value="clicked" type="button"></button>
       </div>
     </li>
   </template>
-  <script src="scripts/index.js" type="module"></script>
+  <!-- <script src="scripts/index.js" type="module"></script> -->
 </body>
 
 </html>
