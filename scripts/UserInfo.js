@@ -20,8 +20,8 @@ export default class UserInfo {
   }
 
   setUserInfo(data) {
-    console.log(`data ${data}`);
-    console.log(`data.name ${data.username}`);
+    // console.log(`data ${data}`);
+    // console.log(`data.name ${data.username}`);
     this._profileName.textContent = data.username;
     this._profileWork.textContent = data.userwork;
   }

@@ -3,9 +3,9 @@ import {
   initialCards,
   validatorData,
   // openPopup,
-  closePopup,
-  onOverlayClick,
-  closeEscapeAllForm
+  // closePopup,
+  // onOverlayClick,
+  // closeEscapeAllForm
 } from "./utils.js";
 import Section from "./Section.js";
 import FormValidator from "./FormValidator.js";
@@ -29,6 +29,14 @@ const profileWork = document.querySelector('.profile__description');
 const btnAddImg = document.querySelector('.profile__add');
 const listElements = document.querySelector('.elements__items');
 
+const cardsList = new Section({
+  // data: messageList,
+  renderer: (item) => {
+    cardsList.addItem(createCard(item));
+  },
+},
+  listElements
+);
 const user = new UserInfo(profileName, profileWork);
 const showImg = new PopupWithImage(imgShow);
 const showEditForm = new PopupWithForm(
@@ -38,8 +46,21 @@ const showEditForm = new PopupWithForm(
     showEditForm.close();
   }
 );
-const showAddImgForm = new PopupWithForm(imgAddForm);
+const showAddImgForm = new PopupWithForm(
+  imgAddForm,
+  function submit(data) {
+    // console.log(`data ${data.name_img} || ${data.link_img}`);
+    const cardAdd = createCard({
+      name: data.name_img,
+      link: data.link_img
+    });
+    cardsList.addItem(cardAdd);
+    showAddImgForm.close();
+  }
+);
 showEditForm.setEventListeners();
+showAddImgForm.setEventListeners();
+showImg.setEventListeners();
 
 function createCard(nameCard) {
   return new Card(
@@ -55,14 +76,7 @@ function createValidator(validatorClass, validatorForm) {
   return new FormValidator(validatorClass, validatorForm);
 }
 
-const cardsList = new Section({
-  // data: messageList,
-  renderer: (item) => {
-    cardsList.addItem(createCard(item));
-  },
-},
-  listElements
-);
+
 
 const profileFormValidator = createValidator(validatorData, ".form_edit");
 profileFormValidator.enableValidation();
@@ -112,7 +126,8 @@ function closeEditForm() {
 }
 
 function closeAddImgForm() {
-  closePopup(imgAddForm);
+  // closePopup(imgAddForm);
+  showAddImgForm.close();
 }
 
 function closeShowImg() {
@@ -148,9 +163,9 @@ btnCloseEditForm.addEventListener('click', closeEditForm);
 btnCloseAddImgForm.addEventListener('click', closeAddImgForm);
 btnCloseShowImg.addEventListener('click', closeShowImg);
 // formEdit.addEventListener('submit', submitFormHandlerEdit);
-imgAddForm.addEventListener('submit', submitFormHandlerAddImg);
+//imgAddForm.addEventListener('submit', submitFormHandlerAddImg);
 // formEdit.addEventListener('click', onOverlayClick);
-imgAddForm.addEventListener('click', onOverlayClick);
-imgShow.addEventListener('click', onOverlayClick);
+// imgAddForm.addEventListener('click', onOverlayClick);
+// imgShow.addEventListener('click', onOverlayClick);
 
 renderCard();

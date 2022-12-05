@@ -38,10 +38,10 @@ const validatorData = {
 //   element.classList.add('popup_show');
 //   document.addEventListener('keydown', closeEscapeAllForm);
 // }
-function closePopup(element) {
-  element.classList.remove('popup_show');
-  document.removeEventListener('keydown', closeEscapeAllForm);
-}
+// function closePopup(element) {
+//   element.classList.remove('popup_show');
+//   document.removeEventListener('keydown', closeEscapeAllForm);
+// }
 
 function onOverlayClick(event) {
   if (event.target === event.currentTarget) {
@@ -49,10 +49,10 @@ function onOverlayClick(event) {
   }
 }
 
-function closeEscapeAllForm(event) {
-  if (event.key === 'Escape') {
-    const openedPopup = document.querySelector('.popup_show');
-    closePopup(openedPopup);
-  }
-}
-export { initialCards, validatorData, /*openPopup,*/ closePopup, onOverlayClick, closeEscapeAllForm }
+// function closeEscapeAllForm(event) {
+//   if (event.key === 'Escape') {
+//     const openedPopup = document.querySelector('.popup_show');
+//     closePopup(openedPopup);
+//   }
+// }
+export { initialCards, validatorData, /*openPopup, closePopup, onOverlayClick, closeEscapeAllForm*/ }

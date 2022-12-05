@@ -16,6 +16,7 @@ export default class Popup {
       this._handleEscClose(event);
     });
   }
+
   close() {
     this._selector.classList.remove('popup_show');
     document.removeEventListener('keydown', (event) => {
@@ -33,7 +34,7 @@ export default class Popup {
 
   setEventListeners() {
     this._selector.addEventListener('click', (event) => {
-      console.log(event);
+      // console.log(event);
       if (event.target === event.currentTarget) {
         this.close();
       }
