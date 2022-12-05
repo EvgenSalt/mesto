@@ -10,6 +10,8 @@ import {
 import Section from "./Section.js";
 import FormValidator from "./FormValidator.js";
 import PopupWithImage from "./PopupWithImage.js";
+import PopupWithForm from "./PopupWithForm.js";
+import UserInfo from "./UserInfo.js";
 
 const btnEdit = document.querySelector('.profile__edit');
 const formEdit = document.querySelector('.popup_edit');
@@ -27,7 +29,17 @@ const profileWork = document.querySelector('.profile__description');
 const btnAddImg = document.querySelector('.profile__add');
 const listElements = document.querySelector('.elements__items');
 
+const user = new UserInfo(profileName, profileWork);
 const showImg = new PopupWithImage(imgShow);
+const showEditForm = new PopupWithForm(
+  formEdit,
+  function submit(data) {
+    user.setUserInfo(data);
+    showEditForm.close();
+  }
+);
+const showAddImgForm = new PopupWithForm(imgAddForm);
+showEditForm.setEventListeners();
 
 function createCard(nameCard) {
   return new Card(
@@ -74,23 +86,29 @@ function renderCard() {
 
 
 function fillInput() {
-  formInputName.value = profileName.textContent;
-  formInputWork.value = profileWork.textContent;
+  const userInfo = user.getUserInfo();
+  formInputName.value = userInfo.name;
+  formInputWork.value = userInfo.work;
+  // formInputName.value = profileName.textContent;
+  // formInputWork.value = profileWork.textContent;
 }
 
 function openEditForm() {
   profileFormValidator.resetValidation();
   fillInput();
-  openPopup(formEdit);
+  showEditForm.open();
+  // openPopup(formEdit);
 }
 
 function openAddImgForm() {
   cardFormValidator.resetValidation();
-  openPopup(imgAddForm);
+  showAddImgForm.open();
+  // openPopup(imgAddForm);
 }
 
 function closeEditForm() {
-  closePopup(formEdit);
+  // closePopup(formEdit);
+  showEditForm.close();
 }
 
 function closeAddImgForm() {
@@ -98,7 +116,8 @@ function closeAddImgForm() {
 }
 
 function closeShowImg() {
-  closePopup(imgShow);
+  // closePopup(imgShow);
+  showImg.close();
 }
 
 function submitFormHandlerEdit(event) {
@@ -128,9 +147,9 @@ btnAddImg.addEventListener('click', openAddImgForm);
 btnCloseEditForm.addEventListener('click', closeEditForm);
 btnCloseAddImgForm.addEventListener('click', closeAddImgForm);
 btnCloseShowImg.addEventListener('click', closeShowImg);
-formEdit.addEventListener('submit', submitFormHandlerEdit);
+// formEdit.addEventListener('submit', submitFormHandlerEdit);
 imgAddForm.addEventListener('submit', submitFormHandlerAddImg);
-formEdit.addEventListener('click', onOverlayClick);
+// formEdit.addEventListener('click', onOverlayClick);
 imgAddForm.addEventListener('click', onOverlayClick);
 imgShow.addEventListener('click', onOverlayClick);
 

@@ -2,14 +2,15 @@
 Создайте класс PopupWithImage, который наследует от Popup
 */
 import Popup from "./Popup.js";
-_popapImg;
-_popapNameImg;
+
 
 export default class PopupWithImage extends Popup {
-  constructor(selectorPopup) {
-    super(selectorPopup);
-    this._popapImg = selectorPopup.querySelector('.popup__img');
-    this._popapNameImg = selectorPopup.querySelector('.popup__text');
+  _popapImg;
+  _popapNameImg;
+  constructor(selector) {
+    super(selector);
+    this._popapImg = selector.querySelector('.popup__img');
+    this._popapNameImg = selector.querySelector('.popup__text');
   }
 
   open(data) {
