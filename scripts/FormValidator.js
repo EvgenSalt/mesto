@@ -7,6 +7,7 @@ export default class FormValidator {
   _inputErrorClass;
   _errorClass;
   _inputList;
+  _buttom;
 
   constructor(data, validatorForm) {
     this._validatorForm = document.querySelector(validatorForm);

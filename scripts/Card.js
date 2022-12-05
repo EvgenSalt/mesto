@@ -1,4 +1,3 @@
-//import { openPopup } from "./utils.js";
 export default class Card {
   _name;
   _link;
@@ -15,12 +14,6 @@ export default class Card {
     this._link = data.link;
     this._template = template;
     this._showFullImg = showFullImg;
-
-
-
-    // this._imgShow = document.querySelector('.popup_show-img');
-    // this._popapImg = document.querySelector('.popup__img');
-    // this._popapNameImg = document.querySelector('.popup__text');
   }
 
   _getElementTemplateCard = () => {
@@ -51,12 +44,5 @@ export default class Card {
       e.target.closest('.elements__item').remove();
     });
     this._imgCard.addEventListener("click", () => this._showFullImg());
-    // this._imgCard.addEventListener('click', () => {
-    //   this._popapImg.src = this._imgCard.src;
-    //   this._popapImg.alt = this._imgCard.alt;
-    //   this._popapNameImg.textContent = this._nameCard.textContent;
-    //   openPopup(this._imgShow);
-
-    // });
   }
 }

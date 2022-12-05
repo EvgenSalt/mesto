@@ -1,7 +1,6 @@
 /*
 Создайте класс Section, который отвечает за отрисовку элементов на странице.
 */
-
 export default class Section {
   _renderer;
   _containerSelector;
@@ -16,9 +15,7 @@ export default class Section {
   }
 
   renderStartCards(listItems) {
-    // console.log(listItems);
     listItems.forEach((item) => {
-      // console.log(item);
       this._renderer(item);
     });
   }

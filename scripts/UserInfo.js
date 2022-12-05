@@ -3,8 +3,8 @@
  */
 
 export default class UserInfo {
-  _inputName;
-  _inputWork;
+  _profileName;
+  _profileWork;
 
   constructor(profileName, profileWork) {
     this._profileName = profileName;
@@ -20,8 +20,6 @@ export default class UserInfo {
   }
 
   setUserInfo(data) {
-    // console.log(`data ${data}`);
-    // console.log(`data.name ${data.username}`);
     this._profileName.textContent = data.username;
     this._profileWork.textContent = data.userwork;
   }

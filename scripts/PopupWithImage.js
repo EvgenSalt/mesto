@@ -2,11 +2,10 @@
 Создайте класс PopupWithImage, который наследует от Popup
 */
 import Popup from "./Popup.js";
-
-
 export default class PopupWithImage extends Popup {
   _popapImg;
   _popapNameImg;
+
   constructor(selector) {
     super(selector);
     this._popapImg = selector.querySelector('.popup__img');
@@ -14,7 +13,6 @@ export default class PopupWithImage extends Popup {
   }
 
   open(data) {
-    // console.log(data);
     this._popapImg.src = data.link;
     this._popapImg.alt = data.name;
     this._popapNameImg.textContent = data.name;
