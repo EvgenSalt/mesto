@@ -3,15 +3,15 @@
 */
 export default class Section {
   _renderer;
-  _containerSelector;
+  _container;
 
-  constructor({ renderer }, containerSelector) {
+  constructor({ renderer }, container) {
     this._renderer = renderer;
-    this._containerSelector = containerSelector;
+    this._container = container;
   }
 
   addItem(element) {
-    this._containerSelector.prepend(element);
+    this._container.prepend(element);
   }
 
   renderStartCards(listItems) {

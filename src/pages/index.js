@@ -1,14 +1,15 @@
-import "./pages/index.css";
-import Card from "./scripts/Card.js";
+import "./index.css";
+import Card from "../components/Card.js";
 import {
   initialCards,
   validatorData,
-} from "./scripts/utils.js";
-import Section from "./scripts/Section.js";
-import FormValidator from "./scripts/FormValidator.js";
-import PopupWithImage from "./scripts/PopupWithImage.js";
-import PopupWithForm from "./scripts/PopupWithForm.js";
-import UserInfo from "./scripts/UserInfo.js";
+} from "../utils/constants.js";
+import Section from "../components/Section.js";
+import FormValidator from "../components/FormValidator.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import UserInfo from "../components/UserInfo.js";
+
 
 const btnEdit = document.querySelector('.profile__edit');
 const formEdit = document.querySelector('.popup_edit');
@@ -33,10 +34,10 @@ const cardsList = new Section({
 );
 
 const user = new UserInfo(profileName, profileWork);
-const showImg = new PopupWithImage(imgShow);
+const showImg = new PopupWithImage('.popup_show-img');
 
 const showEditForm = new PopupWithForm(
-  formEdit,
+  '.popup_edit',
   function submit(data) {
     user.setUserInfo(data);
     showEditForm.close();
@@ -44,7 +45,7 @@ const showEditForm = new PopupWithForm(
 );
 
 const showAddImgForm = new PopupWithForm(
-  imgAddForm,
+  '.popup_add',
   function submit(data) {
     const cardAdd = createCard({
       name: data.name_img,
@@ -75,13 +76,8 @@ profileFormValidator.enableValidation();
 const cardFormValidator = createValidator(validatorData, ".form_add");
 cardFormValidator.enableValidation();
 
-function renderCard() {
-  cardsList.renderStartCards(initialCards.map((item) => {
-    return ({
-      name: item.name,
-      link: item.link,
-    })
-  }));
+function renderCards() {
+  cardsList.renderStartCards(initialCards);
 }
 
 function fillInput() {
@@ -101,25 +97,25 @@ function openAddImgForm() {
   showAddImgForm.open();
 }
 
-function closeEditForm() {
-  showEditForm.close();
-}
+// function closeEditForm() {
+//   showEditForm.close();
+// }
 
-function closeAddImgForm() {
-  showAddImgForm.close();
-}
+// function closeAddImgForm() {
+//   showAddImgForm.close();
+// }
 
-function closeShowImg() {
-  showImg.close();
-}
+// function closeShowImg() {
+//   showImg.close();
+// }
 
 btnEdit.addEventListener('click', openEditForm);
 btnAddImg.addEventListener('click', openAddImgForm);
-btnCloseEditForm.addEventListener('click', closeEditForm);
-btnCloseAddImgForm.addEventListener('click', closeAddImgForm);
-btnCloseShowImg.addEventListener('click', closeShowImg);
+// btnCloseEditForm.addEventListener('click', closeEditForm);
+// btnCloseAddImgForm.addEventListener('click', closeAddImgForm);
+// btnCloseShowImg.addEventListener('click', closeShowImg);
 showEditForm.setEventListeners();
 showAddImgForm.setEventListeners();
 showImg.setEventListeners();
 
-renderCard();
+renderCards();
