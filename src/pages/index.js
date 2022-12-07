@@ -10,14 +10,8 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
 
-
 const btnEdit = document.querySelector('.profile__edit');
 const formEdit = document.querySelector('.popup_edit');
-const imgAddForm = document.querySelector('.popup_add');
-const imgShow = document.querySelector('.popup_show-img');
-const btnCloseEditForm = formEdit.querySelector('.popup__close_edit-form');
-const btnCloseAddImgForm = imgAddForm.querySelector('.popup__close_add-img');
-const btnCloseShowImg = imgShow.querySelector('.popup__close_show-img');
 const formInputName = formEdit.querySelector('.form__input_text_name');
 const formInputWork = formEdit.querySelector('.form__input_text_work');
 const profileName = document.querySelector('.profile__name');
@@ -97,23 +91,8 @@ function openAddImgForm() {
   showAddImgForm.open();
 }
 
-// function closeEditForm() {
-//   showEditForm.close();
-// }
-
-// function closeAddImgForm() {
-//   showAddImgForm.close();
-// }
-
-// function closeShowImg() {
-//   showImg.close();
-// }
-
 btnEdit.addEventListener('click', openEditForm);
 btnAddImg.addEventListener('click', openAddImgForm);
-// btnCloseEditForm.addEventListener('click', closeEditForm);
-// btnCloseAddImgForm.addEventListener('click', closeAddImgForm);
-// btnCloseShowImg.addEventListener('click', closeShowImg);
 showEditForm.setEventListeners();
 showAddImgForm.setEventListeners();
 showImg.setEventListeners();
