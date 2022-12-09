@@ -3,7 +3,7 @@
 ### О ПРОЕКТЕ
 Одностраничный адаптивный сайт. В рамках  обучения в [Яндекс.Практикум](https://practicum.yandex.ru/).
 
-* [**Ссылка на проект**](https://evgensalt.github.io/mesto/index.html)
+* [**Ссылка на проект**](https://evgensalt.github.io/mesto)
 
 ### Обзор
 
