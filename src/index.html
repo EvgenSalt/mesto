@@ -81,6 +81,20 @@
       </div>
     </div>
   </div>
+  <div class="popup popup_edit-avatar">
+    <div class="popup__container">
+      <button aria-label="close" class="popup__close popup__close_edit-avatar" type="button"></button>
+      <form action="signin" method="post" name="card-form" class="form form_avatar" novalidate>
+        <h3 class="form__title">
+          Обновить аватар
+        </h3>
+        <input type="url" name="link_img" placeholder="Ссылка на картинку" class="form__input form__input_text_src-img"
+          value="" required id="link-img">
+        <span class="form__msg" id="link-img-error">error</span>
+        <button aria-label="submit" class="form__btn" type="submit">Сохранить</button>
+      </form>
+    </div>
+  </div>
   <template class="template__card">
     <li class="elements__item">
       <button aria-label="like" class="elements__trash" value="clicked" type="button"></button>

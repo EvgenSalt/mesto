@@ -11,12 +11,14 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
 
 const btnEdit = document.querySelector('.profile__edit');
+const btnAddImg = document.querySelector('.profile__add');
+const btnAddAvatar = document.querySelector('.profile__avatar_edit');
 const formEdit = document.querySelector('.popup_edit');
 const formInputName = formEdit.querySelector('.form__input_text_name');
 const formInputWork = formEdit.querySelector('.form__input_text_work');
 const profileName = document.querySelector('.profile__name');
 const profileWork = document.querySelector('.profile__description');
-const btnAddImg = document.querySelector('.profile__add');
+
 const listElements = document.querySelector('.elements__items');
 
 const cardsList = new Section({
@@ -50,6 +52,14 @@ const showAddImgForm = new PopupWithForm(
   }
 );
 
+const editAvatarForm = new PopupWithForm(
+  '.popup_edit-avatar',
+  function submit(data) {
+
+    editAvatarForm.close();
+  }
+);
+
 function createCard(nameCard) {
   return new Card(
     nameCard,
@@ -69,6 +79,9 @@ profileFormValidator.enableValidation();
 
 const cardFormValidator = createValidator(validatorData, ".form_add");
 cardFormValidator.enableValidation();
+
+const avatarFormValidator = createValidator(validatorData, ".form_avatar");
+avatarFormValidator.enableValidation();
 
 function renderCards() {
   cardsList.renderStartCards(initialCards);
@@ -91,10 +104,17 @@ function openAddImgForm() {
   showAddImgForm.open();
 }
 
+function openAddAvatarForm() {
+  avatarFormValidator.resetValidation();
+  editAvatarForm.open();
+}
+
 btnEdit.addEventListener('click', openEditForm);
 btnAddImg.addEventListener('click', openAddImgForm);
+btnAddAvatar.addEventListener('click', openAddAvatarForm);
 showEditForm.setEventListeners();
 showAddImgForm.setEventListeners();
 showImg.setEventListeners();
+editAvatarForm.setEventListeners();
 
 renderCards();
