@@ -15,7 +15,7 @@ export default class Section {
   }
 
   renderStartCards(listItems) {
-    listItems.forEach((item) => {
+    listItems.slice().reverse().forEach((item) => {
       this._renderer(item);
     });
   }

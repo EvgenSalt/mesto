@@ -20,6 +20,9 @@ const profileName = document.querySelector('.profile__name');
 const profileWork = document.querySelector('.profile__description');
 const listElements = document.querySelector('.elements__items');
 
+const user = new UserInfo(profileName, profileWork);
+const showImg = new PopupWithImage('.popup_show-img');
+
 api.getUserProfile()
   .then(res => {
     user.setUserInfo(
@@ -38,13 +41,19 @@ const cardsList = new Section({
   listElements
 );
 
-const user = new UserInfo(profileName, profileWork);
-const showImg = new PopupWithImage('.popup_show-img');
-
 const showEditForm = new PopupWithForm(
   '.popup_edit',
   function submit(data) {
-    user.setUserInfo(data);
+    api.editProfile(data)
+      .then(res => {
+        console.log('res', res)
+        user.setUserInfo(
+          {
+            username: res.name,
+            userwork: res.about
+          }
+        );
+      })
     showEditForm.close();
   }
 );
@@ -52,11 +61,15 @@ const showEditForm = new PopupWithForm(
 const showAddImgForm = new PopupWithForm(
   '.popup_add',
   function submit(data) {
-    const cardAdd = createCard({
-      name: data.name_img,
-      link: data.link_img
-    });
-    cardsList.addItem(cardAdd);
+    api.addNewCard(data)
+      .then(res => {
+        console.log('res', res)
+        const cardAdd = createCard({
+          name: data.name_img,
+          link: data.link_img
+        });
+        cardsList.addItem(cardAdd);
+      })
     showAddImgForm.close();
   }
 );
@@ -64,8 +77,14 @@ const showAddImgForm = new PopupWithForm(
 const editAvatarForm = new PopupWithForm(
   '.popup_edit-avatar',
   function submit(data) {
-
     editAvatarForm.close();
+  }
+);
+
+const confirmForm = new PopupWithForm(
+  '.popup_delet-img',
+  function submit(data) {
+    confirmForm.close();
   }
 );
 
@@ -76,6 +95,9 @@ function createCard(nameCard) {
     function showFullImg() {
       showImg.open(nameCard);
     },
+    function confirm() {
+      confirmForm.open();
+    }
   ).getElementCard();
 }
 
@@ -129,5 +151,6 @@ showEditForm.setEventListeners();
 showAddImgForm.setEventListeners();
 showImg.setEventListeners();
 editAvatarForm.setEventListeners();
+confirmForm.setEventListeners();
 
 renderCards();
