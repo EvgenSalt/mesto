@@ -34,4 +34,4 @@ const validatorData = {
   errorClass: 'form__input_type_error'
 };
 
-export { initialCards, validatorData }
+export { validatorData }

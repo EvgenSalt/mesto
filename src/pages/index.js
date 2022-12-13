@@ -1,7 +1,7 @@
 import "./index.css";
+import { api } from '../components/Api.js'
 import Card from "../components/Card.js";
 import {
-  initialCards,
   validatorData,
 } from "../utils/constants.js";
 import Section from "../components/Section.js";
@@ -18,8 +18,17 @@ const formInputName = formEdit.querySelector('.form__input_text_name');
 const formInputWork = formEdit.querySelector('.form__input_text_work');
 const profileName = document.querySelector('.profile__name');
 const profileWork = document.querySelector('.profile__description');
-
 const listElements = document.querySelector('.elements__items');
+
+api.getUserProfile()
+  .then(res => {
+    user.setUserInfo(
+      {
+        username: res.name,
+        userwork: res.about
+      }
+    );
+  })
 
 const cardsList = new Section({
   renderer: (item) => {
@@ -84,7 +93,11 @@ const avatarFormValidator = createValidator(validatorData, ".form_avatar");
 avatarFormValidator.enableValidation();
 
 function renderCards() {
-  cardsList.renderStartCards(initialCards);
+  api.getInitialCards()
+    .then(res => {
+      cardsList.renderStartCards(res);
+    }
+    )
 }
 
 function fillInput() {
