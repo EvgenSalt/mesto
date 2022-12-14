@@ -47,17 +47,14 @@ class Api {
   }
 
   deleteCard(card_id) {
-    return fetch(`${this.baseUrl}/cards/${card_id}`, {
+    return fetch(`${this._baseUrl}/cards/${card_id}`, {
       method: "DELETE",
-      headers: this.headers,
+      headers: this._headers
     })
       .then(res => res.ok ? res.json() : Promise.reject(res.status))
       .catch(console.log)
   }
 }
-
-
-
 export const api = new Api({
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-54',
   headers: {
