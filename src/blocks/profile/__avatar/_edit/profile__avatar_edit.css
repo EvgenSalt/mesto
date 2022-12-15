@@ -1,4 +1,4 @@
-.profile__avatar_edit {
+.profile__avatar__edit {
   position: absolute;
   background: url(../../../../images/EditBtnAvatar.svg) center no-repeat;
   width: 120px;
@@ -8,7 +8,7 @@
   opacity: 0;
 }
 
-.profile__avatar_edit:hover {
+.profile__avatar__edit:hover {
   cursor: pointer;
   opacity: .8;
   transition: opacity .3s;
@@ -16,7 +16,7 @@
 }
 
 @media (max-width: 720px) {
-  .profile__avatar_edit {
+  .profile__avatar__edit {
     left: calc(50% - 54px);
   }
 }
