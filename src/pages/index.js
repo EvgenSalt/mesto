@@ -73,7 +73,6 @@ const showEditForm = new PopupWithForm(
     loadingInformBtn(document.querySelector('.popup_edit'), true)
     api.editProfile(data)
       .then(res => {
-        console.log('res', res)
         user.setUserInfo(
           {
             username: res.name,
@@ -94,7 +93,6 @@ const showAddImgForm = new PopupWithForm(
   function submit(data) {
     api.addNewCard(data)
       .then(res => {
-        console.log('res', res)
         const cardAdd = createCard({
           name: res.name,
           link: res.link,
@@ -114,7 +112,6 @@ const editAvatarForm = new PopupWithForm(
   function submit(data) {
     api.editAvatarProfile(data)
       .then(res => {
-        console.log('res', res)
         user.setAvatar(res.avatar)
         editAvatarForm.close();
       })
@@ -126,7 +123,6 @@ const popupWithConfirmation = new PopupWithConfirmation(
   function submit(card) {
     api.deleteCard(card._id)
       .then(res => {
-        console.log('res', res);
         card._element.remove();
         popupWithConfirmation.close();
       })
@@ -148,14 +144,12 @@ function createCard(nameCard) {
       if (newCard.isLiked()) {
         api.deleteLike(card_id)
           .then((res) => {
-            console.log('res', res)
             newCard.setLikes(res.likes)
           })
       }
       else {
         api.addLike(card_id)
           .then((res) => {
-            console.log('res', res)
             newCard.setLikes(res.likes)
           })
       }
