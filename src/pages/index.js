@@ -13,7 +13,7 @@ import UserInfo from "../components/UserInfo.js";
 
 const btnEdit = document.querySelector('.profile__edit');
 const btnAddImg = document.querySelector('.profile__add');
-const btnAddAvatar = document.querySelector('.profile__avatar__edit');
+const btnAddAvatar = document.querySelector('.profile__avatar-edit');
 const formEdit = document.querySelector('.popup_edit');
 const formInputName = formEdit.querySelector('.form__input_text_name');
 const formInputWork = formEdit.querySelector('.form__input_text_work');
