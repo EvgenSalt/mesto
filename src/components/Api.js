@@ -33,6 +33,18 @@ class Api {
       .catch(console.log)
   }
 
+  editAvatarProfile(data) {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({
+        avatar: data.link_img
+      })
+    })
+      .then(res => res.ok ? res.json() : Promise.reject(res.status))
+      .catch(console.log)
+  }
+
   addNewCard(data) {
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
@@ -48,6 +60,24 @@ class Api {
 
   deleteCard(card_id) {
     return fetch(`${this._baseUrl}/cards/${card_id}`, {
+      method: "DELETE",
+      headers: this._headers
+    })
+      .then(res => res.ok ? res.json() : Promise.reject(res.status))
+      .catch(console.log)
+  }
+
+  addLike(card_id) {
+    return fetch(`${this._baseUrl}/cards/${card_id}/likes`, {
+      method: "PUT",
+      headers: this._headers
+    })
+      .then(res => res.ok ? res.json() : Promise.reject(res.status))
+      .catch(console.log)
+  }
+
+  deleteLike(card_id) {
+    return fetch(`${this._baseUrl}/cards/${card_id}/likes`, {
       method: "DELETE",
       headers: this._headers
     })

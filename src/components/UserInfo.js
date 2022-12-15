@@ -6,9 +6,10 @@ export default class UserInfo {
   _profileName;
   _profileWork;
 
-  constructor(profileName, profileWork) {
+  constructor(profileName, profileWork, userAvatar) {
     this._profileName = profileName;
     this._profileWork = profileWork;
+    this._userAvatar = userAvatar;
   }
 
   getUserInfo() {
@@ -22,5 +23,10 @@ export default class UserInfo {
   setUserInfo(data) {
     this._profileName.textContent = data.username;
     this._profileWork.textContent = data.userwork;
+    this._userAvatar.src = data.avatar;
+  }
+
+  setAvatar(data) {
+    this._userAvatar.src = data;
   }
 }

@@ -19,10 +19,11 @@ const formInputName = formEdit.querySelector('.form__input_text_name');
 const formInputWork = formEdit.querySelector('.form__input_text_work');
 const profileName = document.querySelector('.profile__name');
 const profileWork = document.querySelector('.profile__description');
+const profilAvatar = document.querySelector('.profile__avatar');
 const listElements = document.querySelector('.elements__items');
 
 let userId;
-const user = new UserInfo(profileName, profileWork);
+
 const showImg = new PopupWithImage('.popup_show-img');
 
 api.getUserProfile()
@@ -30,12 +31,15 @@ api.getUserProfile()
     user.setUserInfo(
       {
         username: res.name,
-        userwork: res.about
+        userwork: res.about,
+        avatar: res.avatar
       }
     );
     userId = res._id;
-    console.log('userId !!', userId);
+
   })
+
+const user = new UserInfo(profileName, profileWork, profilAvatar);
 
 const cardsList = new Section({
   renderer: (item) => {
@@ -53,19 +57,34 @@ const cardsList = new Section({
   listElements
 );
 
+function loadingInformBtn(pupup, statusBtn) {
+  const loadingBtn = pupup.querySelector('.form__btn');
+  if (statusBtn) {
+    return (loadingBtn.textContent = 'Сохранение...')
+  }
+  else {
+    return (loadingBtn.textContent = "Сохранить");
+  }
+}
+
 const showEditForm = new PopupWithForm(
   '.popup_edit',
   function submit(data) {
+    loadingInformBtn(document.querySelector('.popup_edit'), true)
     api.editProfile(data)
       .then(res => {
         console.log('res', res)
         user.setUserInfo(
           {
             username: res.name,
-            userwork: res.about
+            userwork: res.about,
+            avatar: res.avatar
           }
         );
       })
+      .finally(() => {
+        loadingInformBtn(document.querySelector('.popup_edit'), false)
+      });
     showEditForm.close();
   }
 );
@@ -93,7 +112,12 @@ const showAddImgForm = new PopupWithForm(
 const editAvatarForm = new PopupWithForm(
   '.popup_edit-avatar',
   function submit(data) {
-    editAvatarForm.close();
+    api.editAvatarProfile(data)
+      .then(res => {
+        console.log('res', res)
+        user.setAvatar(res.avatar)
+        editAvatarForm.close();
+      })
   }
 );
 
@@ -119,7 +143,22 @@ function createCard(nameCard) {
     },
     function confirm(element) {
       popupWithConfirmation.open(element);
-      console.log('newCard', newCard);
+    },
+    function toggleLikes(card_id) {
+      if (newCard.isLiked()) {
+        api.deleteLike(card_id)
+          .then((res) => {
+            console.log('res', res)
+            newCard.setLikes(res.likes)
+          })
+      }
+      else {
+        api.addLike(card_id)
+          .then((res) => {
+            console.log('res', res)
+            newCard.setLikes(res.likes)
+          })
+      }
     }
   );
   return newCard.getElementCard();
