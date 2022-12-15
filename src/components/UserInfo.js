@@ -7,9 +7,9 @@ export default class UserInfo {
   _profileWork;
 
   constructor(profileName, profileWork, userAvatar) {
-    this._profileName = profileName;
-    this._profileWork = profileWork;
-    this._userAvatar = userAvatar;
+    this._profileName = document.querySelector(profileName);
+    this._profileWork = document.querySelector(profileWork);
+    this._userAvatar = document.querySelector(userAvatar);
   }
 
   getUserInfo() {

@@ -22,9 +22,9 @@ export default class FormValidator {
   }
 
   enableValidation = () => {
-    this._validatorForm.addEventListener("submit", (event) => {
-      event.preventDefault();
-    });
+    // this._validatorForm.addEventListener("submit", (event) => {
+    //   event.preventDefault();
+    // });
     this._setEventListeners();
   }
 

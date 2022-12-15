@@ -4,20 +4,25 @@ class Api {
     this._headers = headers;
   }
 
+  _getResponseData(res) {
+    if (!res.ok) {
+      return Promise.reject(`Ошибка: ${res.status}`);
+    }
+    return res.json();
+  }
+
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
       headers: this._headers
     })
-      .then(res => res.ok ? res.json() : Promise.reject(res.status))
-      .catch(console.log)
+      .then((res) => this._getResponseData(res))
   }
 
   getUserProfile() {
     return fetch(`${this._baseUrl}/users/me`, {
       headers: this._headers
     })
-      .then(res => res.ok ? res.json() : Promise.reject(res.status))
-      .catch(console.log)
+      .then((res) => this._getResponseData(res))
   }
 
   editProfile(data) {
@@ -29,8 +34,7 @@ class Api {
         about: data.userwork
       })
     })
-      .then(res => res.ok ? res.json() : Promise.reject(res.status))
-      .catch(console.log)
+      .then((res) => this._getResponseData(res))
   }
 
   editAvatarProfile(data) {
@@ -41,8 +45,7 @@ class Api {
         avatar: data.link_img
       })
     })
-      .then(res => res.ok ? res.json() : Promise.reject(res.status))
-      .catch(console.log)
+      .then((res) => this._getResponseData(res))
   }
 
   addNewCard(data) {
@@ -54,8 +57,7 @@ class Api {
         link: data.link_img
       })
     })
-      .then(res => res.ok ? res.json() : Promise.reject(res.status))
-      .catch(console.log)
+      .then((res) => this._getResponseData(res))
   }
 
   deleteCard(card_id) {
@@ -63,8 +65,7 @@ class Api {
       method: "DELETE",
       headers: this._headers
     })
-      .then(res => res.ok ? res.json() : Promise.reject(res.status))
-      .catch(console.log)
+      .then((res) => this._getResponseData(res))
   }
 
   addLike(card_id) {
@@ -72,8 +73,7 @@ class Api {
       method: "PUT",
       headers: this._headers
     })
-      .then(res => res.ok ? res.json() : Promise.reject(res.status))
-      .catch(console.log)
+      .then((res) => this._getResponseData(res))
   }
 
   deleteLike(card_id) {
@@ -81,8 +81,7 @@ class Api {
       method: "DELETE",
       headers: this._headers
     })
-      .then(res => res.ok ? res.json() : Promise.reject(res.status))
-      .catch(console.log)
+      .then((res) => this._getResponseData(res))
   }
 }
 export const api = new Api({

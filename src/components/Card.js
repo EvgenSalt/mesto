@@ -69,16 +69,18 @@ export default class Card {
     }
   }
 
+  deletCard() {
+    this._element.remove();
+    this._element = null;
+  }
 
   _setEventListeners() {
     this._btnlike.addEventListener('click', () => { // toggle like
-      // this._btnlike.classList.toggle('elements__like_active');
       this._toggleLikes(this._id);
     });
 
     this._btnTrash.addEventListener('click', (e) => { // delete card
-      this._confirm(this);
-      // e.target.closest('.elements__item').remove();
+      this._confirm(this._id);
     });
     this._imgCard.addEventListener("click", () => this._showFullImg());
   }
