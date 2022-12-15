@@ -120,7 +120,7 @@ function createCard(nameCard) {
       popupWithConfirmation.open();
       popupWithConfirmation.changeSubmit(() => {
         api.deleteCard(card_id)
-          .then(res => {
+          .then((res) => {
             newCard.deletCard();
             popupWithConfirmation.close();
           })
